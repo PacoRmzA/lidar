@@ -8,6 +8,8 @@ from launch.event_handlers.on_process_start import OnProcessStart
 
 def generate_launch_description():
 
+    use_keyboard = False
+
     rviz = Node(
             package='rviz2',
             executable='rviz2',
@@ -18,19 +20,19 @@ def generate_launch_description():
                 'config',
                 'lidar.rviz')]
         )
-    # key_teleop = Node(
-    #         package='key_teleop',
-    #         executable='key_teleop',
-    #         name='key_teleop',
-    #         output='screen',
-    #         prefix='xterm -e'
-    #     )
-    # nav = Node(
-    #         package='te3003b_rover',  # Replace with the name of your package
-    #         executable='keyboard_movement',  # Name of the static transform broadcaster script
-    #         name='keyboard_movement',
-    #         output='screen'
-    #     )
+    key_teleop = Node(
+            package='key_teleop',
+            executable='key_teleop',
+            name='key_teleop',
+            output='screen',
+            prefix='xterm -e'
+        )
+    nav_key = Node(
+            package='te3003b_rover',  # Replace with the name of your package
+            executable='keyboard_movement',  # Name of the static transform broadcaster script
+            name='keyboard_movement',
+            output='screen'
+        )
     nav = Node(
             package='te3003b_rover',  # Replace with the name of your package
             executable='path_planner',  # Name of the static transform broadcaster script
@@ -59,15 +61,22 @@ def generate_launch_description():
         return start_lifecycle_manager_cmd
     
     def bringup_nav(event: ProcessStarted, context: LaunchContext):
-        time.sleep(3)
+        time.sleep(5)
         return nav
 
-    l_d = LaunchDescription([
-        RegisterEventHandler(event_handler=OnProcessStart(target_action=nav,
-                                                          on_start=bringup_map)),
-        RegisterEventHandler(event_handler=OnProcessStart(target_action=rviz,
-                                                          on_start=bringup_nav)),
-        img_map, rviz
-    ])
+    if use_keyboard:
+        l_d = LaunchDescription([
+            RegisterEventHandler(event_handler=OnProcessStart(target_action=nav_key,
+                                                            on_start=bringup_map)),
+            nav_key, key_teleop, img_map, rviz
+        ])
+    else:
+        l_d = LaunchDescription([
+            RegisterEventHandler(event_handler=OnProcessStart(target_action=nav,
+                                                            on_start=bringup_map)),
+            RegisterEventHandler(event_handler=OnProcessStart(target_action=rviz,
+                                                            on_start=bringup_nav)),
+            img_map, rviz
+        ])
 
     return l_d

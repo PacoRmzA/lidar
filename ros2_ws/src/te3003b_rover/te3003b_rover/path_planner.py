@@ -20,7 +20,6 @@ class PathPlanner(Node):
 
         self.timer = self.create_timer(0.1, self.timer_callback)  # Publish every 0.1 seconds
 
-
         # Set up the TransformBroadcaster for TF messages
         self.tf_broadcaster = TransformBroadcaster(self)
 
@@ -36,15 +35,13 @@ class PathPlanner(Node):
         self.done = False
 
         self.create_subscription(OccupancyGrid, '/map', self.map_callback, 10)
-
-        time.sleep(5)
-        
     
     def timer_callback(self):
         # static map!! (for now)
         if self.alg is None and self.map is not None:
+            self.broadcast_transforms()
             self.alg = d_star_lite.StateGraph(self.map, start=[10,10], goal=[190,140])
-            self.scan_range = 20
+            self.scan_range = 50
             self.s_start = self.alg.start_state_id
             self.path_to_start = []
             self.s_last = self.s_start
@@ -69,7 +66,7 @@ class PathPlanner(Node):
                 self.get_logger().info("GOAL REACHED!")
                 self.done = True
             self.get_logger().info(f"Moving to target position: ({self.position_x}, {self.position_y})")
-            self.broadcast_transforms()
+        self.broadcast_transforms()
 
     def map_callback(self, msg):
         map_np_arr = np.array(msg.data, dtype=np.uint8)
