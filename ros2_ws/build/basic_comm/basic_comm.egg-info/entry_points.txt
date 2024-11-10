@@ -1,4 +1,0 @@
-[console_scripts]
-listener = basic_comm.listener:main
-talker = basic_comm.talker:main
-
