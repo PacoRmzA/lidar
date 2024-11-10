@@ -1,5 +1,0 @@
-  File "/home/emitaker/ros2_ws/install/urdf_tutorial_r2d2/lib/python3.10/site-packages/urdf_tutorial_r2d2/lidar_publisher_slam.py", line 45
-    position_x = position_x += 0.1 * math.cos(self.yaw) 
-                            ^^
-SyntaxError: invalid syntax
-
