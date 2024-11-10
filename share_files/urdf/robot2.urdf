@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot name="puzzlebot">
+
+
+  <material name="chassis_color">
+        <color rgba="0 0.6 0 1"/>
+  </material>
+  
+  <!-- Chassis Link -->
+  <link name="chassis">
+    <visual>
+      <origin rpy="1.57 0 0" xyz="0 0 0.05"  /> <!-- 90 degrees rotation around the X-axis -->
+      <geometry>
+        <mesh filename="package://first_pkg/meshes/MCR2_1000_13_Chassis.stl"/>
+      </geometry>
+      <material name="chassis_color"/>
+    </visual>
+  </link>
+
+
+</robot>
+
