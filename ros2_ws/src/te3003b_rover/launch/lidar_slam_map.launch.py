@@ -9,7 +9,7 @@ from launch.event_handlers.on_process_start import OnProcessStart
 def generate_launch_description():
 
     # one of 'keyboard', 'path_planner' or 'avoid_obstacles', defaults to 'keyboard'
-    control_param = 'keyboard'
+    control_param = 'path_planner'
     
     rviz = Node(
             package='rviz2',
@@ -61,12 +61,6 @@ def generate_launch_description():
                 'resolution': 0.05
             }],
         )
-    path_planner = Node(
-            package='te3003b_rover',  # Replace with the name of your package
-            executable='path_planner',  # Name of the static transform broadcaster script
-            name='path_planner',
-            output='screen'
-        )
     
     def bringup_cartographer(event: ProcessStarted, context: LaunchContext):
         time.sleep(5)
@@ -75,12 +69,6 @@ def generate_launch_description():
     cart_handler = RegisterEventHandler(event_handler=OnProcessStart(target_action=lidar,
                                                                      on_start=bringup_cartographer))
 
-    match control_param:
-        case 'path_planner':
-            l_d = LaunchDescription([rviz, path_planner, lidar, cart_handler])
-        case 'avoid_obstacles':
-            l_d = LaunchDescription([rviz, lidar, cart_handler])
-        case _:
-            l_d = LaunchDescription([rviz, key_teleop, lidar, cart_handler])
+    l_d = LaunchDescription([rviz, key_teleop, lidar, cart_handler])
 
     return l_d

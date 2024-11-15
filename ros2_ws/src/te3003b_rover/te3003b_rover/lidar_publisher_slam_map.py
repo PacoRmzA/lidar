@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import rclpy, math, time
+import numpy as np
 from rclpy.node import Node
 from geometry_msgs.msg import TransformStamped
 from geometry_msgs.msg import Twist
@@ -9,6 +10,7 @@ from sensor_msgs.msg import LaserScan
 from sensor_msgs.msg import Imu
 from nav_msgs.msg import OccupancyGrid
 from nav_msgs.msg import Odometry
+from . import d_star_lite
 from coppeliasim_zmqremoteapi_client import RemoteAPIClient
 
 class LidarPublisher(Node):
@@ -16,6 +18,7 @@ class LidarPublisher(Node):
         super().__init__('lidar_publisher')
 
         self.declare_parameter('control', 'keyboard')
+        self.control = self.get_parameter('control').get_parameter_value().string_value
         # Publisher for LaserScan
         self.publisher_ = self.create_publisher(LaserScan, 'scan', 10)
         #self.imu_publisher_ = self.create_publisher(Imu, 'imu', 10)
@@ -25,7 +28,12 @@ class LidarPublisher(Node):
         # Set up the TransformBroadcaster for TF messages
         self.tf_broadcaster = TransformBroadcaster(self)
         
-        
+        # Path planner variables
+        self.alg = None
+        self.navmap = None
+        self.first_run = True
+        self.done = False
+
         # Connect to CoppeliaSim
         self.client = RemoteAPIClient()
         self.sim = self.client.getObject('sim')
@@ -54,18 +62,13 @@ class LidarPublisher(Node):
         # Initialize variable to hold map data
         self.map_data = None
         self.key_input_vel = Twist(linear=self.list_to_vector3(), angular=self.list_to_vector3())
-        # self.last_key_input_vel = None
-        # self.quaternion = None
-        # self.zero_cov_9 = [0.0]*9
         self.zero_cov_36 = [0.0]*36
         
     
     def timer_callback(self):
-        control = self.get_parameter('control').get_parameter_value().string_value
-
-        match control:
+        match self.control:
             case 'path_planner':
-                pass
+                self.iterate_nav_alg()
             case 'avoid_obstacles':
                 self.navigate_based_on_map()
             case _:
@@ -80,11 +83,41 @@ class LidarPublisher(Node):
         # Publish LiDAR data as usual
         self.publish_lidar_data()
 
-        # Publish fake IMU data
-        #self.publish_imu_data()
+        # Publish sim Odometry data
         self.publish_odom_data()
 
-        
+    def iterate_nav_alg(self):
+        if self.alg is None and self.navmap is not None:
+            # self.broadcast_transforms() # to reduce update delay
+            # TODO: pass targets from target chooser
+            self.alg = d_star_lite.StateGraph(self.navmap, start=[0,0], goal=[5,5])
+            self.scan_range = 50
+            self.s_start = self.alg.start_state_id
+            self.path_to_start = []
+            self.s_last = self.s_start
+            self.path_possible = True
+            self.alg.Initialize(self.s_start, self.first_run, False)
+            self.alg.ComputeShortestPath(self.s_start)
+            
+        if self.alg is not None and self.path_possible and not self.done:
+            if self.s_start != self.alg.goal_state_id:
+
+                self.s_start, self.s_last = self.alg.RunProcedure(self.s_start, self.s_last, self.scan_range)
+
+                if self.s_start is None or self.s_last is None:
+                    self.get_logger().info("REINITIALIZING!")
+                    self.alg = None
+                    self.first_run = False
+                else:
+                    next_point = self.alg.StateIDToCoods(self.s_start)
+                    self.position_x = next_point[0]*0.05
+                    self.position_y = next_point[1]*0.05
+                    self.path_to_start.append(next_point)
+
+            else:
+                self.get_logger().info("GOAL REACHED!")
+                self.done = True
+
     def navigate_based_on_map(self):
         # Parameters for navigation behavior
         movement_step = 0.005  # Step size for movement in meters
@@ -145,6 +178,14 @@ class LidarPublisher(Node):
     def map_callback(self, msg):
         # Store the latest map data
         self.map_data = msg
+        if self.control == 'path_planner':
+            map_np_arr = np.array(msg.data, dtype=np.uint8)
+            transf_map = (-(map_np_arr.reshape((msg.info.height, msg.info.width)) / 100) + 1)
+            self.navmap = (transf_map > 0.5) * 255
+            if self.alg is not None:
+                self.alg.obstacles = self.navmap
+                self.alg.size = [self.navmap.shape[1], self.navmap.shape[0]]
+                self.alg.ack_obstacles = np.reshape(self.alg.ack_obstacles, self.navmap.shape)
 
     def key_callback(self, msg):
         key_vel : Twist = msg
@@ -221,24 +262,6 @@ class LidarPublisher(Node):
             #self.get_logger().info("Published LaserScan data to RViz.")
         else:
             self.get_logger().info('No data retrieved from CoppeliaSim.')
-
-    # def publish_imu_data(self):
-    #     imu_msg = Imu()
-    #     imu_msg.header.stamp = self.get_clock().now().to_msg()
-    #     imu_msg.angular_velocity_covariance = self.zero_cov
-    #     imu_msg.orientation_covariance = self.zero_cov
-    #     imu_msg.linear_acceleration_covariance = self.zero_cov
-    #     imu_msg.orientation = self.quaternion
-    #     imu_msg.angular_velocity = self.list_to_vector3([0.0, 0.0, self.key_input_vel.angular.z*10])
-    #     if self.last_key_input_vel is not None:
-    #         imu_msg.linear_acceleration = self.list_to_vector3([(self.key_input_vel.linear.x - self.last_key_input_vel.linear.x)*10,\
-    #                                                             (self.key_input_vel.linear.y - self.last_key_input_vel.linear.y)*10,
-    #                                                             (self.key_input_vel.linear.z - self.last_key_input_vel.linear.z)*10])
-    #     else:
-    #         imu_msg.linear_acceleration = self.list_to_vector3([0.0, 0.0, 0.0])
-    #     self.last_key_input_vel = self.key_input_vel
-    #     self.imu_publisher_.publish(imu_msg)
-    #     #self.get_logger().info(f'Publishing fake imu data: {imu_msg}')
 
     def publish_odom_data(self):
         odom = Odometry()
