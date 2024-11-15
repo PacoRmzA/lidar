@@ -42,8 +42,6 @@ class LidarPublisher(Node):
         self.max_range = 4.0
         self.angle_min = -math.pi * 135 / 180
         self.angle_max = math.pi * 135 / 180
-        # FIXME: this is actually not true, coppelia sends data in irregular angle intervals
-        # that's why the lidar readings are distorted in RViz
         self.angle_increment = math.pi / 180
         
         # Subscribe to the /map topic
