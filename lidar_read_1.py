@@ -7,6 +7,7 @@
 import matplotlib.pyplot as plt
 from coppeliasim_zmqremoteapi_client import RemoteAPIClient
 import time
+import numpy as np
 
 # Establish connection
 client = RemoteAPIClient()
@@ -24,7 +25,7 @@ while True:
     data = sim.readCustomTableData(sim.handle_scene, "lidarData")
     
     if data:
-        print("Retrieved data:", data)  # Debugging: Print the retrieved data
+        #print("Retrieved data:", data)  # Debugging: Print the retrieved data
 
         distances = []
         angles = []
@@ -41,12 +42,16 @@ while True:
                 print("Error: Incomplete data pair encountered.")
 
         # Debugging: Check if distances and angles are populated
-        print("Distances:", distances)
-        print("Angles:", angles)
+        #print("Distances:", distances)
+        #print("Angles:", angles)
 
         # Clear and update polar plot
         ax.clear()
         ax.scatter(angles, distances)
+        deg = np.rad2deg(np.array(angles))
+        np.set_printoptions(suppress=True)
+        print(f"{deg[0]} to {deg[-1]}")
+        #print(np.ediff1d(deg))
         plt.pause(0.05)  # Slight delay to update the plot
 
     else:

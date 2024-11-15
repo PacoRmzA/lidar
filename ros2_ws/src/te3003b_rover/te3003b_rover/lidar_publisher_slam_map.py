@@ -42,6 +42,8 @@ class LidarPublisher(Node):
         self.max_range = 4.0
         self.angle_min = -math.pi * 135 / 180
         self.angle_max = math.pi * 135 / 180
+        # FIXME: this is actually not true, coppelia sends data in irregular angle intervals
+        # that's why the lidar readings are distorted in RViz
         self.angle_increment = math.pi / 180
         
         # Subscribe to the /map topic
@@ -185,12 +187,29 @@ class LidarPublisher(Node):
             scan_msg.range_max = self.max_range
 
             ranges = []
+
+            st_angle = int(math.degrees(lidar_data[1]))
+            end_angle = int(math.degrees(lidar_data[-1]))
+            last_deg = st_angle
+
+            # add data for missing angles at beginning of scan
+            for i in range(int(math.degrees(self.angle_min)), st_angle):
+                ranges.append(self.max_range + 10)
+
             for i in range(0, len(lidar_data), 2):
                 distance = lidar_data[i]
                 angle = lidar_data[i + 1]
-                index = int((angle - self.angle_min) / self.angle_increment)
-                if 0 <= index < int((self.angle_max - self.angle_min) / self.angle_increment):
-                    ranges.append(distance)
+                deg = int(math.degrees(angle))
+                diff = deg - last_deg
+                # only add in 1 deg increments, pad data when an angle is skipped
+                for i in range(diff):
+                    ranges.append(distance) 
+                last_deg = deg
+
+            # add data for missing angles at end of scan
+            for i in range(end_angle, int(math.degrees(self.angle_max))+1):
+                ranges.append(self.max_range + 10)
+
             scan_msg.ranges = ranges
             self.publisher_.publish(scan_msg)
             #self.get_logger().info("Published LaserScan data to RViz.")
