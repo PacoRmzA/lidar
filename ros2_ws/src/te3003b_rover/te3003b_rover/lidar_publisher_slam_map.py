@@ -35,8 +35,12 @@ class LidarPublisher(Node):
         self.lidar_handle = self.sim.getObjectHandle('/SickTIM310')  # Replace with your actual object name in CoppeliaSim
 
         # Movement parameters
-        self.position_x, self.position_y, _ = self.sim.getObjectPosition(self.lidar_handle)
-        _, _, self.yaw = self.sim.getObjectOrientation(self.lidar_handle)
+        self.copp_pos_x, self.copp_pos_y, _ = self.sim.getObjectPosition(self.lidar_handle)
+        _, _, self.copp_yaw = self.sim.getObjectOrientation(self.lidar_handle)
+        self.position_x = 0.0
+        self.position_y = 0.0
+        self.yaw = 0.0
+        self.broadcast_transforms()
 
         # LiDAR setup parameters
         self.max_range = 4.0
@@ -165,11 +169,15 @@ class LidarPublisher(Node):
 
 
     def set_lidar_position_in_coppeliasim(self):
+        pos_x = self.copp_pos_x + (self.position_x * math.cos(self.copp_yaw) \
+                                    + self.position_y * -math.sin(self.copp_yaw))
+        pos_y = self.copp_pos_y + (self.position_x * math.sin(self.copp_yaw) \
+                                    + self.position_y * math.cos(self.copp_yaw))
         # Set position in CoppeliaSim
-        self.sim.setObjectPosition(self.lidar_handle, -1, [self.position_x, self.position_y, 0.1])
+        self.sim.setObjectPosition(self.lidar_handle, -1, [pos_x, pos_y, 0.1])
 
         # Set orientation in CoppeliaSim
-        self.sim.setObjectOrientation(self.lidar_handle, -1, [0, 0, self.yaw])
+        self.sim.setObjectOrientation(self.lidar_handle, -1, [0, 0, self.copp_yaw+self.yaw])
 
 
     def publish_lidar_data(self):
