@@ -1,5 +1,9 @@
 import cv2
 import numpy as np
+import glob, os
 
-arr = np.load('map.np.npy')
-cv2.imwrite('map.png', arr)
+os.chdir("/home/thecubicjedi/lidar/map_captures")
+for file in glob.glob("*.npy"):
+    arr = np.load(file)
+    cv2.imwrite(f'{file}.png', arr)
+

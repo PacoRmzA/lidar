@@ -357,8 +357,8 @@ if __name__ == "__main__":
 
     continue_display = True
 
-    map_img = cv2.resize(cv2.imread('noiseTextureBinHard.png', cv2.IMREAD_UNCHANGED), (200, 150))
-    map_img_temp = cv2.resize(cv2.imread('noiseTextureBinHard.png', cv2.IMREAD_UNCHANGED), (200, 150))
+    map_img = cv2.resize(cv2.imread('/home/thecubicjedi/lidar/noiseTextureBinHard.png', cv2.IMREAD_UNCHANGED), (200, 150))
+    map_img_temp = cv2.resize(cv2.imread('/home/thecubicjedi/lidar/noiseTextureBinHard.png', cv2.IMREAD_UNCHANGED), (200, 150))
 
     mutex_mat = threading.Lock()
     buffer_mat = np.zeros(map_img.shape, np.uint8)

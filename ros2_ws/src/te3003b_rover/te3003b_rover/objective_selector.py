@@ -10,7 +10,10 @@ class ObjectiveSelector(Node):
         super().__init__('objective_selector')
 
         self.declare_parameter('max_distance', 10000.0)
+        self.declare_parameter('goals', [[0,0],[0,0],[0,0]])
         self.max_dist = self.get_parameter('max_distance').get_parameter_value().double_value
+        goal_arr = self.get_parameter('goals').get_parameter_value().integer_array_value
+        self.goals = [[goal_arr[i],goal_arr[i+1]] for i in range(0,len(goal_arr),2)]
 
         self.timer = self.create_timer(0.1, self.timer_callback)  # Publish every 0.1 seconds
 
@@ -24,7 +27,6 @@ class ObjectiveSelector(Node):
         self.create_subscription(Distance, '/distance', self.dist_callback, 10)
         self.publisher_ = self.create_publisher(Vector3, 'goal', 10)
         self.dist_est = 0
-        self.goals = [[0,0],[0,0],[0,0]]
     
     def timer_callback(self):
         # choose goal from self.goal based on distance
