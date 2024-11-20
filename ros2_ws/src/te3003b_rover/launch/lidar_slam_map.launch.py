@@ -39,14 +39,14 @@ def generate_launch_description():
                 'planner_map_size': planner_map_size
             }],
         )
-    lidar = Node(
+    obj_selector = Node(
             package='te3003b_rover',  # Replace with the name of your package
             executable='objective_selector',  # Name of the static transform broadcaster script
             name='objective_selector',
             output='screen',
             parameters=[{
-                'goals': [[188,127],[158,123],[172,146]],
-                'max_distance': 200,
+                'goals': [188,127,  158,123,  172,146],
+                'max_distance': 200.0,
                 'planner_map_size': planner_map_size
             }],
         )
@@ -77,7 +77,7 @@ def generate_launch_description():
     
     def bringup_cartographer(event: ProcessStarted, context: LaunchContext):
         time.sleep(5)
-        return cartographer_node, occupancy_grid_node
+        return cartographer_node, occupancy_grid_node, obj_selector
 
     cart_handler = RegisterEventHandler(event_handler=OnProcessStart(target_action=lidar,
                                                                      on_start=bringup_cartographer))

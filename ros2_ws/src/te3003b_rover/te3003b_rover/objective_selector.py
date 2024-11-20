@@ -9,7 +9,7 @@ class ObjectiveSelector(Node):
         super().__init__('objective_selector')
 
         self.declare_parameter('max_distance', 10000.0)
-        self.declare_parameter('goals', [[0,0],[0,0],[0,0]])
+        self.declare_parameter('goals', [0,0,  0,0,  0,0])
         self.declare_parameter('planner_map_size', 300)
         self.dist_left = self.get_parameter('max_distance').get_parameter_value().double_value
         goal_arr = self.get_parameter('goals').get_parameter_value().integer_array_value
@@ -33,6 +33,8 @@ class ObjectiveSelector(Node):
         self.est_distance_remaining = 0.0
         self.dist_to_start = 0.0
 
+        self.timer = self.create_timer(2, self.timer_callback)
+
         # create custom message with position, rem distance and distance traveled so far
         self.create_subscription(Vector3, '/planner_pos', self.pos_callback, 10)
         self.publisher_ = self.create_publisher(Vector3, 'goal', 10)
@@ -40,23 +42,25 @@ class ObjectiveSelector(Node):
         # sort goals based on distance from current position
         self.update_goals()
         self.get_logger().info(f'INITIAL GOAL AT ({self.goals[0][0]},{self.goals[0][1]})')
-        self.publisher_.publish(Vector3(x=self.goals[0][0], y=self.goals[0][1], z=0.0))
+        self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
     
     def pos_callback(self, msg):
         self.last_x = self.map_pos_x
         self.last_y = self.map_pos_y
         self.map_pos_x = msg.x
         self.map_pos_y = msg.y
-        self.distance_traveled += self.distance([self.last_x, self.last_x], [msg.x, msg.y])
+        self.distance_traveled += self.distance([self.last_x, self.last_y], [msg.x, msg.y])
         self.distance_to_goal = self.distance([msg.x, msg.y], self.goals[0])
 
         if self.map_pos_x == self.goals[0][0] and self.map_pos_y == self.goals[0][1]: # goal reached
             self.goals.pop(0)
             self.update_goals()
             self.dist_left -= self.distance_traveled
+            self.distance_traveled = 0.0
+            self.get_logger().info(f'GOAL REACHED; REMAINING ENERGY: {self.dist_left}')
             # have enough energy to go to the next goal and return to base
-            if len(self.goals) > 0 and self.dist_left >= (self.distance[0] + self.distances_goal_base[0])*self.route_factor:
-                self.publisher_.publish(Vector3(x=self.goals[0][0], y=self.goals[0][1], z=0.0))
+            if len(self.goals) > 0 and self.dist_left >= (self.distances[0] + self.distances_goal_base[0])*self.route_factor:
+                self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
                 self.get_logger().info(f'GOING TO NEW GOAL AT ({self.goals[0][0]},{self.goals[0][1]})')
             # back in base (whether all goals were reached or not)
             elif self.map_pos_x == self.start_x and self.map_pos_y == self.start_y:
@@ -64,7 +68,9 @@ class ObjectiveSelector(Node):
             # not enough energy for next goal but enough to get back to base (or ideally all goals already done)
             elif self.dist_left >= (self.dist_to_start)*self.route_factor:
                 self.goals = [self.start]
-                self.publisher_.publish(Vector3(x=self.goals[0][0], y=self.goals[0][1], z=0.0))
+                self.distances[0] = self.distances_goal_base[0]
+                self.distances_goal_base[0] = 0.0
+                self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
                 self.get_logger().info(f'RETURNING TO BASE AT MAP COORDS ({self.start_x},{self.start_y})')
             # not enough energy to go anywhere
             else:
@@ -74,31 +80,39 @@ class ObjectiveSelector(Node):
             # not enough energy to reach goal and return to base
             if self.dist_left < self.distance_traveled + (self.distance_to_goal + self.distances_goal_base[0])*self.route_factor:
                 self.goals.pop(0)
-                self.dist_left -= self.distance_traveled
                 self.update_goals()
+                self.dist_left -= self.distance_traveled
+                self.distance_traveled = 0.0
+                self.get_logger().info(f'RECALCULATING TARGET; REMAINING ENERGY: {self.dist_left}')
                 # enough energy for new goal
-                if self.dist_left >= (self.distances[0] + self.distances_goal_base[0])*self.route_factor:
-                    self.publisher_.publish(Vector3(x=self.goals[0][0], y=self.goals[0][1], z=0.0))
-                    self.get_logger().info(f'SWITCHING TO GOAL AT ({self.goals[0][0]},{self.goals[0][1]})')
+                if len(self.goals) > 0 and self.dist_left >= (self.distances[0] + self.distances_goal_base[0])*self.route_factor:
+                    self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
+                    self.get_logger().info(f'ABORTING AND SWITCHING TO GOAL AT ({self.goals[0][0]},{self.goals[0][1]})')
                 # enough energy to go back to base
                 elif self.dist_left >= self.dist_to_start*self.route_factor:
                     self.goals = [self.start]
-                    self.publisher_.publish(Vector3(x=self.goals[0][0], y=self.goals[0][1], z=0.0))
-                    self.get_logger().info(f'RETURNING TO BASE AT MAP COORDS ({self.start_x},{self.start_y})')
+                    self.distances[0] = self.distances_goal_base[0]
+                    self.distances_goal_base[0] = 0.0
+                    self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
+                    self.get_logger().info(f'ABORTING AND RETURNING TO BASE AT MAP COORDS ({self.start_x},{self.start_y})')
                 # not enough energy to go anywhere
                 else:
                     # set current position as goal to prevent further movement
                     self.goals = [[msg.x, msg.y]]
-                    self.publisher_.publish(Vector3(x=self.goals[0][0], y=self.goals[0][1], z=0.0))
-                    self.get_logger().info('NOT ENOUGH ENERGY FOR NEXT GOAL OR RETURN TO BASE; SEND SUPPORT')
+                    self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
+                    self.get_logger().info('ABORTED; NOT ENOUGH ENERGY FOR NEXT GOAL OR RETURN TO BASE; SEND SUPPORT')
 
     # goals are sorted by energy required to reach them and then return to base
     def update_goals(self):
-        self.goals = sorted(self.goals, key=cmp_to_key(self.compare_goals))
-        pos = [self.map_pos_x, self.map_pos_y]
-        self.distances = [self.distance(pos, goal) for goal in self.goals]
-        self.distances_goal_base = [self.distance(self.start, goal) for goal in self.goals]
-        self.dist_to_start = self.distance(pos, self.start)
+        if len(self.goals) > 0:
+            self.goals = sorted(self.goals, key=cmp_to_key(self.compare_goals))
+            pos = [self.map_pos_x, self.map_pos_y]
+            self.distances = [self.distance(pos, goal) for goal in self.goals]
+            self.distances_goal_base = [self.distance(self.start, goal) for goal in self.goals]
+            self.dist_to_start = self.distance(pos, self.start)
+
+    def timer_callback(self):
+        self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
 
     def compare_goals(self, a, b):
         pos = [self.map_pos_x, self.map_pos_y]

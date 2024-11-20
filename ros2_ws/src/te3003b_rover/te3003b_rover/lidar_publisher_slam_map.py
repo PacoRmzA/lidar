@@ -86,11 +86,8 @@ class LidarPublisher(Node):
         self.map_pos_x = self.map_size[1] // 2
         self.map_pos_y = self.map_size[1] // 2
         self.navmap = np.zeros(tuple(self.map_size))
-        self.init_planner()
 
     def init_planner(self):
-        if self.goal is None:
-            rclpy.wait_for_message.wait_for_message(Vector3, self, '/goal')
         self.alg = d_star_lite.StateGraph(self.navmap, start=[self.goal_start_x, self.goal_start_y], goal=self.goal)
         self.s_start = self.alg.start_state_id
         self.path_to_start = [[self.goal_start_x, self.goal_start_y]]
@@ -107,11 +104,11 @@ class LidarPublisher(Node):
             case _:
                 self.navigate_based_on_keystrokes()
 
-        # Publish sim Odometry data
-        self.publish_odom_data()
-
         # Broadcast transformation for ROS2 TFs
         self.broadcast_transforms()
+
+        # Publish sim Odometry data
+        self.publish_odom_data()
 
         # Send position and orientation to CoppeliaSim
         self.set_lidar_position_in_coppeliasim()
@@ -120,34 +117,37 @@ class LidarPublisher(Node):
         self.publish_lidar_data()
 
     def iterate_nav_alg(self):            
-        if self.map_ready() and not self.done:
-            if self.s_start != self.alg.goal_state_id:
+        if not self.map_ready() or self.done or self.goal is None:
+            return
+        if self.alg is None:
+            self.init_planner()
+        if self.s_start != self.alg.goal_state_id:
 
-                self.s_start, self.s_last = self.alg.RunProcedure(self.s_start, self.s_last, self.scan_range)
+            self.s_start, self.s_last = self.alg.RunProcedure(self.s_start, self.s_last, self.scan_range)
 
-                if self.s_start is None or self.s_last is None:
-                    self.get_logger().info("REINITIALIZING!")
-                    self.first_run = False
-                    self.return_to_origin()
-                    self.init_planner()
-                    self.start_time = self.get_clock().now()
-                else:
-                    next_point = self.alg.StateIDToCoods(self.s_start)
-                    self.map_pos_x = next_point[0]
-                    self.map_pos_y = next_point[1]
-                    self.position_x = (next_point[0] - self.nav_start_x)*self.map_res
-                    self.position_y = (next_point[1] - self.nav_start_y)*self.map_res # img/alg coords are different than map coords
-                    self.planner_twist.linear.x = (next_point[0] - self.path_to_start[-1][0]) * self.map_res * (1/self.timer_rate)
-                    self.planner_twist.linear.y = (next_point[1] - self.path_to_start[-1][1]) * self.map_res * (1/self.timer_rate)
-                    self.get_logger().info(f"RAN MAP STEP! ({next_point[0]},{next_point[1]}) aka ({self.position_x:.2f},{self.position_y:.2f})")
-                    self.path_to_start.append(next_point)
-                    self.map_pos_publisher_.publish(Vector3(x=self.map_pos_x, y=self.map_pos_y, z=0.0))
-
+            if self.s_start is None or self.s_last is None:
+                self.get_logger().info("REINITIALIZING!")
+                self.first_run = False
+                self.return_to_origin()
+                self.init_planner()
+                self.start_time = self.get_clock().now()
             else:
-                self.get_logger().info("GOAL REACHED!")
-                self.map_pos_x, self.map_pos_x = self.alg.StateIDToCoods(self.s_start)
-                self.map_pos_publisher_.publish(Vector3(x=self.map_pos_x, y=self.map_pos_y, z=0.0))
-                self.done = True
+                next_point = self.alg.StateIDToCoods(self.s_start)
+                self.map_pos_x = next_point[0]
+                self.map_pos_y = next_point[1]
+                self.position_x = (next_point[0] - self.nav_start_x)*self.map_res
+                self.position_y = (next_point[1] - self.nav_start_y)*self.map_res # img/alg coords are different than map coords
+                self.planner_twist.linear.x = (next_point[0] - self.path_to_start[-1][0]) * self.map_res * (1/self.timer_rate)
+                self.planner_twist.linear.y = (next_point[1] - self.path_to_start[-1][1]) * self.map_res * (1/self.timer_rate)
+                self.get_logger().info(f"RAN MAP STEP! ({next_point[0]},{next_point[1]}) aka ({self.position_x:.2f},{self.position_y:.2f})")
+                self.path_to_start.append(next_point)
+                self.map_pos_publisher_.publish(Vector3(x=float(self.map_pos_x), y=float(self.map_pos_y), z=0.0))
+
+        else:
+            self.get_logger().info("GOAL REACHED!")
+            self.map_pos_x, self.map_pos_x = self.alg.StateIDToCoods(self.s_start)
+            self.map_pos_publisher_.publish(Vector3(x=float(self.map_pos_x), y=float(self.map_pos_y), z=0.0))
+            self.done = True
 
     def navigate_based_on_map(self):
         # Parameters for navigation behavior
@@ -238,6 +238,7 @@ class LidarPublisher(Node):
 
     def goal_callback(self, msg):
         rec = [int(msg.x), int(msg.y)]
+        self.get_logger().info(f"Got goal: {rec}")
         if self.goal is None:
             self.goal = rec
         elif self.goal != rec:
@@ -369,8 +370,8 @@ class LidarPublisher(Node):
             self.planner_twist.linear.y = (pos[1] - last_pos[1]) * self.map_res * 10
             self.position_x = (pos[0] - self.nav_start_x)*self.map_res
             self.position_y = (pos[1] - self.nav_start_y)*self.map_res # img/alg coords are different than map coords
-            self.publish_odom_data()
             self.broadcast_transforms()
+            self.publish_odom_data()
             self.set_lidar_position_in_coppeliasim()
             self.publish_lidar_data()
             time.sleep(0.1)

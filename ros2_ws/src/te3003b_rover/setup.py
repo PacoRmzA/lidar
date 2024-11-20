@@ -32,7 +32,8 @@ setup(
         'lidar_publisher_slam = te3003b_rover.lidar_publisher_slam:main',
         'lidar_publisher_slam_map = te3003b_rover.lidar_publisher_slam_map:main',
         'keyboard_movement = te3003b_rover.keyboard_movement:main',
-        'path_planner = te3003b_rover.path_planner:main'
+        'path_planner = te3003b_rover.path_planner:main',
+        'objective_selector = te3003b_rover.objective_selector:main'
         ],
     },
 )
