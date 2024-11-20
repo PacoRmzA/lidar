@@ -10,6 +10,7 @@ def generate_launch_description():
 
     # one of 'keyboard', 'path_planner' or 'avoid_obstacles', defaults to 'keyboard'
     control_param = 'path_planner'
+    planner_map_size = 300
     
     rviz = Node(
             package='rviz2',
@@ -34,7 +35,19 @@ def generate_launch_description():
             name='lidar_publisher_slam_map',
             output='screen',
             parameters=[{
-                'control': control_param
+                'control': control_param,
+                'planner_map_size': planner_map_size
+            }],
+        )
+    lidar = Node(
+            package='te3003b_rover',  # Replace with the name of your package
+            executable='objective_selector',  # Name of the static transform broadcaster script
+            name='objective_selector',
+            output='screen',
+            parameters=[{
+                'goals': [[188,127],[158,123],[172,146]],
+                'max_distance': 200,
+                'planner_map_size': planner_map_size
             }],
         )
     cartographer_node = Node(
