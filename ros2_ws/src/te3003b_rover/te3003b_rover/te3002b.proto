@@ -1,0 +1,31 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package TE3002BSimPkg;
+
+service TE3002BSim {
+	rpc GetImageFrame (google.protobuf.Empty) returns (ImageFrame){
+
+	};
+
+	rpc SetCommand (CommandData) returns (google.protobuf.Empty){
+
+	};
+}
+
+message ImageFrame {
+	bytes data = 1;
+	uint32 width = 2;
+	uint32 height = 3;
+	string format = 4;
+}
+
+message Vector3{
+	double x = 1;
+	double y = 2;
+	double z = 3;
+}
+
+message CommandData {
+	Vector3 linear = 1;
+	Vector3 angular = 2;
+}

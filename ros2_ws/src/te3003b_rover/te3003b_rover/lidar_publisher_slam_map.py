@@ -5,7 +5,7 @@ import cv2 as cv
 import rclpy.duration
 from rclpy.node import Node
 from geometry_msgs.msg import TransformStamped
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Twist, Pose, Point
 from geometry_msgs.msg import Vector3
 import rclpy.timer
 import rclpy.wait_for_message
@@ -28,6 +28,7 @@ class LidarPublisher(Node):
         self.publisher_ = self.create_publisher(LaserScan, 'scan', 10)
         self.map_pos_publisher_ = self.create_publisher(Vector3, 'planner_pos', 10)
         self.odom_publisher_ = self.create_publisher(Odometry, 'odom', 10)
+        self.pose_publisher_ = self.create_publisher(Pose, 'rover_pose', 10)
         self.timer_rate = 0.5
         self.timer = self.create_timer(self.timer_rate, self.timer_callback)  # Publish every 0.1 seconds
         
@@ -261,6 +262,7 @@ class LidarPublisher(Node):
         t.transform.rotation = self.quaternion
 
         self.tf_broadcaster.sendTransform(t)
+        self.pose_publisher_.publish(Pose(position=Point(x=self.position_x, y=self.position.y, z=0.0), orientation=self.quaternion))
         self.get_logger().info(f"Map to reference: ({self.position_x:.2f}, {self.position_y:.2f}), Yaw: {self.yaw:.2f}")
 
 
