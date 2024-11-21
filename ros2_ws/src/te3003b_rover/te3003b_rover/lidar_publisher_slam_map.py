@@ -128,9 +128,10 @@ class LidarPublisher(Node):
             if self.s_start is None or self.s_last is None:
                 self.get_logger().info("REINITIALIZING!")
                 self.first_run = False
-                self.return_to_origin()
+                self.goal_start_x = self.path_to_start[0][0] if len(self.path_to_start) < 5 else self.path_to_start[-5][0]
+                self.goal_start_y = self.path_to_start[0][1] if len(self.path_to_start) < 5 else self.path_to_start[-5][1]
+                self.walk_back()
                 self.init_planner()
-                self.start_time = self.get_clock().now()
             else:
                 next_point = self.alg.StateIDToCoods(self.s_start)
                 self.map_pos_x = next_point[0]
@@ -363,15 +364,18 @@ class LidarPublisher(Node):
         elapsed = (now - self.start_time) > rclpy.duration.Duration(seconds=8)
         return self.map_data is not None and elapsed
     
-    def return_to_origin(self):
+    def walk_back(self):
         last_pos = self.path_to_start.pop()
-        for pos in self.path_to_start[::-1]:
+        if len(self.path_to_start) < 5:
+            self.path_to_start += [last_pos]*(len(self.path_to_start) - 5)
+        for pos in self.path_to_start[-1:-6:-1]:
             self.planner_twist.linear.x = (pos[0] - last_pos[0]) * self.map_res * 10
             self.planner_twist.linear.y = (pos[1] - last_pos[1]) * self.map_res * 10
             self.position_x = (pos[0] - self.nav_start_x)*self.map_res
             self.position_y = (pos[1] - self.nav_start_y)*self.map_res # img/alg coords are different than map coords
             self.broadcast_transforms()
             self.publish_odom_data()
+            self.map_pos_publisher_.publish(Vector3(x=float(pos[0]), y=float(pos[1]), z=0.0))
             self.set_lidar_position_in_coppeliasim()
             self.publish_lidar_data()
             time.sleep(0.1)

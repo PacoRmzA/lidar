@@ -32,6 +32,7 @@ class ObjectiveSelector(Node):
         self.distance_traveled = 0.0
         self.est_distance_remaining = 0.0
         self.dist_to_start = 0.0
+        self.done = False
 
         self.timer = self.create_timer(2, self.timer_callback)
 
@@ -45,6 +46,8 @@ class ObjectiveSelector(Node):
         self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
     
     def pos_callback(self, msg):
+        if self.done:
+            return
         self.last_x = self.map_pos_x
         self.last_y = self.map_pos_y
         self.map_pos_x = msg.x
@@ -65,6 +68,7 @@ class ObjectiveSelector(Node):
             # back in base (whether all goals were reached or not)
             elif self.map_pos_x == self.start_x and self.map_pos_y == self.start_y:
                 self.get_logger().info('BASE REACHED; MISSION COMPLETE')
+                self.done = True
             # not enough energy for next goal but enough to get back to base (or ideally all goals already done)
             elif self.dist_left >= (self.dist_to_start)*self.route_factor:
                 self.goals = [self.start]
@@ -75,6 +79,7 @@ class ObjectiveSelector(Node):
             # not enough energy to go anywhere
             else:
                 self.get_logger().info('NOT ENOUGH ENERGY FOR NEXT GOAL OR RETURN TO BASE; SEND SUPPORT')
+                self.done = True
 
         else: # goal not yet reached
             # not enough energy to reach goal and return to base
@@ -101,6 +106,7 @@ class ObjectiveSelector(Node):
                     self.goals = [[msg.x, msg.y]]
                     self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
                     self.get_logger().info('ABORTED; NOT ENOUGH ENERGY FOR NEXT GOAL OR RETURN TO BASE; SEND SUPPORT')
+                    self.done = True
 
     # goals are sorted by energy required to reach them and then return to base
     def update_goals(self):
@@ -112,11 +118,12 @@ class ObjectiveSelector(Node):
             self.dist_to_start = self.distance(pos, self.start)
 
     def timer_callback(self):
-        self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
+        if not self.done:
+            self.publisher_.publish(Vector3(x=float(self.goals[0][0]), y=float(self.goals[0][1]), z=0.0))
 
     def compare_goals(self, a, b):
         pos = [self.map_pos_x, self.map_pos_y]
-        return (self.distance(b, pos)+self.distance(b, self.start)) - (self.distance(a, pos)+self.distance(a, self.start))
+        return (self.distance(a, pos)+self.distance(a, self.start)) - (self.distance(b, pos)+self.distance(b, self.start))
     
     def distance(self, a, b):
         return math.sqrt((a[0]-b[0])**2 + (a[1]-b[1])**2)

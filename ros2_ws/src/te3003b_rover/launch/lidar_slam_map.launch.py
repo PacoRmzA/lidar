@@ -45,7 +45,8 @@ def generate_launch_description():
             name='objective_selector',
             output='screen',
             parameters=[{
-                'goals': [188,127,  158,123,  172,146],
+                #'goals': [188,127,  158,123,  172,146],
+                'goals': [188,130,  213,140,  172,153],
                 'max_distance': 200.0,
                 'planner_map_size': planner_map_size
             }],
