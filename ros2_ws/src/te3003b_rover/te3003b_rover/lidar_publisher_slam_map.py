@@ -262,7 +262,7 @@ class LidarPublisher(Node):
         t.transform.rotation = self.quaternion
 
         self.tf_broadcaster.sendTransform(t)
-        self.pose_publisher_.publish(Pose(position=Point(x=self.position_x, y=self.position.y, z=0.0), orientation=self.quaternion))
+        self.pose_publisher_.publish(Pose(position=Point(x=self.position_x, y=self.position_y, z=0.0), orientation=self.quaternion))
         self.get_logger().info(f"Map to reference: ({self.position_x:.2f}, {self.position_y:.2f}), Yaw: {self.yaw:.2f}")
 
 

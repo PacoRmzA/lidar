@@ -15,7 +15,7 @@ import google.protobuf.empty_pb2
 class RESTImageNode(Node):
     def __init__(self):
         super().__init__('rpc_image_node')
-        self._addr="172.22.208.1" # running on WSL; normal address is 127.0.0.1
+        self._addr="192.168.100.63" # running on WSL; normal address is 127.0.0.1
         self.channel=grpc.insecure_channel(self._addr+':7072')
         self.stub = te3002b_pb2_grpc.TE3002BSimStub(self.channel)
         qos_profile = QoSProfile(
@@ -51,6 +51,7 @@ class RESTImageNode(Node):
         self.cv_image=img
         if self.cv_image is not None:
             gray = cv.cvtColor(self.cv_image, cv.COLOR_BGR2GRAY)
+            cv.imwrite(f"/home/thecubicjedi/lidar/cam_frames/frame.png", gray)
             _, ids, _ = self.aruco_detector.detectMarkers(gray)
             if ids is not None:
                 self.publisher_.publish(String(data=f"Detected marker with ID {ids[0]}"))
