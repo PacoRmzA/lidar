@@ -1,0 +1,681 @@
+[INFO] [launch]: All log files can be found below /home/thecubicjedi/.ros/log/2024-11-22-12-51-00-473282-ASUS-Laptop-55306
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [rviz2-1]: process started with pid [55318]
+[INFO] [xterm-2]: process started with pid [55319]
+[INFO] [lidar_publisher_slam_map-3]: process started with pid [55320]
+[xterm-2] xterm: cannot load font "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1"
+[rviz2-1] MESA: error: ZINK: failed to choose pdev
+[rviz2-1] glx: failed to create drisw screen
+[rviz2-1] MESA: error: ZINK: failed to choose pdev
+[rviz2-1] glx: failed to create drisw screen
+[rviz2-1] [INFO] [1732301464.561648329] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-1] [INFO] [1732301464.562135904] [rviz2]: OpenGl version: 4.1 (GLSL 4.1)
+[rviz2-1] [INFO] [1732301464.743631551] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [cartographer_node-4]: process started with pid [55416]
+[INFO] [cartographer_occupancy_grid_node-5]: process started with pid [55417]
+[INFO] [objective_selector-6]: process started with pid [55418]
+[lidar_publisher_slam_map-3] [INFO] [1732301464.920781009] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301464.934913524] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301465.351938610] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301465.857486680] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301466.353822807] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301466.862205941] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301467.056415287] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/home/thecubicjedi/lidar/ros2_ws/install/te3003b_rover/share/te3003b_rover/config/cartographer.lua' for 'cartographer.lua'.
+[cartographer_node-4] [INFO] [1732301467.058503452] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/map_builder.lua' for 'map_builder.lua'.
+[cartographer_node-4] [INFO] [1732301467.058988643] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/map_builder.lua' for 'map_builder.lua'.
+[cartographer_node-4] [INFO] [1732301467.059301501] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/pose_graph.lua' for 'pose_graph.lua'.
+[cartographer_node-4] [INFO] [1732301467.059517651] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/pose_graph.lua' for 'pose_graph.lua'.
+[cartographer_node-4] [INFO] [1732301467.060908967] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/trajectory_builder.lua' for 'trajectory_builder.lua'.
+[cartographer_node-4] [INFO] [1732301467.061110633] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/trajectory_builder.lua' for 'trajectory_builder.lua'.
+[cartographer_node-4] [INFO] [1732301467.061676124] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/trajectory_builder_2d.lua' for 'trajectory_builder_2d.lua'.
+[cartographer_node-4] [INFO] [1732301467.062129874] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/trajectory_builder_2d.lua' for 'trajectory_builder_2d.lua'.
+[cartographer_node-4] [INFO] [1732301467.062757698] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/trajectory_builder_3d.lua' for 'trajectory_builder_3d.lua'.
+[cartographer_node-4] [INFO] [1732301467.062886490] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 configuration_file_resolver.cc:41] Found '/opt/ros/jazzy/share/cartographer/configuration_files/trajectory_builder_3d.lua' for 'trajectory_builder_3d.lua'.
+[cartographer_node-4] [INFO] [1732301467.177533170] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 map_builder_bridge.cpp:136] Added trajectory with ID '0'.
+[lidar_publisher_slam_map-3] [INFO] [1732301467.353713530] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301467.356076878] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 ordered_multi_queue.cc:172] All sensor data for trajectory 0 is available starting at '638678982673542409'.
+[cartographer_node-4] [WARN] [1732301467.540931706] [cartographer logger]: W20241122 12:51:07.-2147483648 55416 pose_extrapolator.cc:168] Queue too short for velocity estimation. Queue duration: 0 s
+[cartographer_node-4] [INFO] [1732301467.542514904] [cartographer logger]: I20241122 12:51:07.-2147483648 55416 pose_graph_2d.cc:148] Inserted submap (0, 0).
+[lidar_publisher_slam_map-3] [INFO] [1732301467.876238953] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[rviz2-1] [INFO] [1732301468.078222102] [rviz2]: Trying to create a map of size 49 x 39 using 1 swatches
+[rviz2-1] [ERROR] [1732301468.111344677] [rviz2]: rviz/glsl120/indexed_8bit_image.vert
+[rviz2-1] rviz/glsl120/indexed_8bit_image.frag
+[rviz2-1]  GLSL link result : 
+[rviz2-1] active samplers with a different type refer to the same texture image unit
+[lidar_publisher_slam_map-3] [INFO] [1732301468.356665092] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301468.857631615] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[objective_selector-6] [INFO] [1732301469.093761538] [objective_selector]: INITIAL GOAL AT (172,146)
+[lidar_publisher_slam_map-3] [INFO] [1732301469.098382734] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301469.352837343] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301469.856896364] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301470.358772087] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301470.853964723] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301471.024199098] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301471.353817377] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301471.852100505] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301472.354671945] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301472.852268911] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301473.009915203] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301485.191271340] [lidar_publisher_slam_map]: RAN MAP STEP! (151,149) aka (0.05,-0.05)
+[rviz2-1] [INFO] [1732301485.192912862] [rviz2]: Message Filter dropping message: frame 'base_link' at time 1732301473.004 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[lidar_publisher_slam_map-3] [INFO] [1732301485.195749446] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.05), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301485.198049839] [cartographer logger]: I20241122 12:51:25.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 2.00 Hz 5.00e-01 s +/- 9.99e-03 s (pulsed at 100.64% real time)
+[cartographer_node-4] [INFO] [1732301485.198192952] [cartographer logger]: I20241122 12:51:25.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 2.09 Hz 4.78e-01 s +/- 1.27e-01 s (pulsed at 31.89% real time)
+[cartographer_node-4] [WARN] [1732301485.201792408] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301473.004014 according to authority Authority undetectable
+[cartographer_node-4] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[rviz2-1] [WARN] [1732301485.202066394] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301473.004014 according to authority Authority undetectable
+[rviz2-1] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[lidar_publisher_slam_map-3] [INFO] [1732301485.357969751] [lidar_publisher_slam_map]: RAN MAP STEP! (152,149) aka (0.10,-0.05)
+[lidar_publisher_slam_map-3] [INFO] [1732301485.359967720] [lidar_publisher_slam_map]: Map to reference: (0.10, -0.05), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301485.476271914] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301485.480737503] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301485.489548944] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301485.494501025] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301485.498283168] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301485.502715349] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301485.857432904] [lidar_publisher_slam_map]: RAN MAP STEP! (153,149) aka (0.15,-0.05)
+[lidar_publisher_slam_map-3] [INFO] [1732301485.864309398] [lidar_publisher_slam_map]: Map to reference: (0.15, -0.05), Yaw: 0.00
+[rviz2-1] [INFO] [1732301485.928465350] [rviz2]: Trying to create a map of size 50 x 39 using 1 swatches
+[lidar_publisher_slam_map-3] [INFO] [1732301486.352897431] [lidar_publisher_slam_map]: RAN MAP STEP! (154,149) aka (0.20,-0.05)
+[lidar_publisher_slam_map-3] [INFO] [1732301486.357887127] [lidar_publisher_slam_map]: Map to reference: (0.20, -0.05), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301486.852860955] [lidar_publisher_slam_map]: RAN MAP STEP! (155,149) aka (0.25,-0.05)
+[lidar_publisher_slam_map-3] [INFO] [1732301486.859855750] [lidar_publisher_slam_map]: Map to reference: (0.25, -0.05), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301487.033567719] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301487.351386180] [lidar_publisher_slam_map]: RAN MAP STEP! (156,149) aka (0.30,-0.05)
+[lidar_publisher_slam_map-3] [INFO] [1732301487.354780778] [lidar_publisher_slam_map]: Map to reference: (0.30, -0.05), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301487.854934301] [lidar_publisher_slam_map]: RAN MAP STEP! (157,148) aka (0.35,-0.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301487.862305396] [lidar_publisher_slam_map]: Map to reference: (0.35, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301488.363442719] [lidar_publisher_slam_map]: RAN MAP STEP! (158,148) aka (0.40,-0.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301488.369534014] [lidar_publisher_slam_map]: Map to reference: (0.40, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301488.851534318] [lidar_publisher_slam_map]: RAN MAP STEP! (159,148) aka (0.45,-0.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301488.855316721] [lidar_publisher_slam_map]: Map to reference: (0.45, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301488.955943040] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301489.352339407] [lidar_publisher_slam_map]: RAN MAP STEP! (160,148) aka (0.50,-0.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301489.355274856] [lidar_publisher_slam_map]: Map to reference: (0.50, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301489.899069556] [lidar_publisher_slam_map]: RAN MAP STEP! (161,148) aka (0.55,-0.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301489.907227351] [lidar_publisher_slam_map]: Map to reference: (0.55, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301490.357237507] [lidar_publisher_slam_map]: RAN MAP STEP! (161,148) aka (0.55,-0.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301490.359710845] [lidar_publisher_slam_map]: Map to reference: (0.55, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301490.851842323] [lidar_publisher_slam_map]: REINITIALIZING!
+[lidar_publisher_slam_map-3] [INFO] [1732301490.855596806] [lidar_publisher_slam_map]: Map to reference: (0.55, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301491.155234408] [lidar_publisher_slam_map]: Map to reference: (0.50, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301491.460413715] [lidar_publisher_slam_map]: Map to reference: (0.45, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301491.688995045] [lidar_publisher_slam_map]: Map to reference: (0.40, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301491.907408373] [lidar_publisher_slam_map]: Map to reference: (0.35, -0.10), Yaw: 0.00
+[rviz2-1] [INFO] [1732301518.184926769] [rviz2]: Message Filter dropping message: frame 'base_link' at time 1732301492.024 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[lidar_publisher_slam_map-3] [INFO] [1732301518.187865875] [lidar_publisher_slam_map]: Map to reference: (0.35, -0.10), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301518.189802698] [cartographer logger]: I20241122 12:51:58.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 2.38 Hz 4.19e-01 s +/- 1.28e-01 s (pulsed at 100.62% real time)
+[cartographer_node-4] [INFO] [1732301518.189964490] [cartographer logger]: I20241122 12:51:58.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 4.47 Hz 2.23e-01 s +/- -nan s (pulsed at 0.90% real time)
+[cartographer_node-4] [WARN] [1732301518.193081063] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301492.023816 according to authority Authority undetectable
+[cartographer_node-4] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[rviz2-1] [WARN] [1732301518.193767829] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301492.023816 according to authority Authority undetectable
+[rviz2-1] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[lidar_publisher_slam_map-3] [INFO] [1732301518.302128197] [lidar_publisher_slam_map]: RAN MAP STEP! (159,148) aka (0.45,-0.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301518.305385112] [lidar_publisher_slam_map]: Map to reference: (0.45, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301518.406287852] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.411175607] [lidar_publisher_slam_map]: RAN MAP STEP! (159,147) aka (0.45,-0.15)
+[lidar_publisher_slam_map-3] [INFO] [1732301518.415676987] [lidar_publisher_slam_map]: Map to reference: (0.45, -0.15), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301518.488188291] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.491850371] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.494731636] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.499393066] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.501591231] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.505146061] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.508219642] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.512712406] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.515402545] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301518.853538624] [lidar_publisher_slam_map]: RAN MAP STEP! (159,146) aka (0.45,-0.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301518.861348893] [lidar_publisher_slam_map]: Map to reference: (0.45, -0.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301518.978206481] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301519.355102955] [lidar_publisher_slam_map]: RAN MAP STEP! (160,145) aka (0.50,-0.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301519.360198427] [lidar_publisher_slam_map]: Map to reference: (0.50, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301519.853424031] [lidar_publisher_slam_map]: RAN MAP STEP! (161,144) aka (0.55,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301519.869483744] [lidar_publisher_slam_map]: Map to reference: (0.55, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301520.352316372] [lidar_publisher_slam_map]: RAN MAP STEP! (162,144) aka (0.60,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301520.355665136] [lidar_publisher_slam_map]: Map to reference: (0.60, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301520.862092105] [lidar_publisher_slam_map]: RAN MAP STEP! (163,144) aka (0.65,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301520.865503903] [lidar_publisher_slam_map]: Map to reference: (0.65, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301521.008047896] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301521.352340937] [lidar_publisher_slam_map]: RAN MAP STEP! (164,145) aka (0.70,-0.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301521.357687733] [lidar_publisher_slam_map]: Map to reference: (0.70, -0.25), Yaw: 0.00
+[rviz2-1] [INFO] [1732301521.433083876] [rviz2]: Trying to create a map of size 70 x 39 using 1 swatches
+[lidar_publisher_slam_map-3] [INFO] [1732301521.853570060] [lidar_publisher_slam_map]: RAN MAP STEP! (165,146) aka (0.75,-0.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301521.862523153] [lidar_publisher_slam_map]: Map to reference: (0.75, -0.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301522.350963076] [lidar_publisher_slam_map]: REINITIALIZING!
+[lidar_publisher_slam_map-3] [INFO] [1732301522.357895546] [lidar_publisher_slam_map]: Map to reference: (0.70, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301522.592043017] [lidar_publisher_slam_map]: Map to reference: (0.65, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301522.848449684] [lidar_publisher_slam_map]: Map to reference: (0.60, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301523.073773959] [lidar_publisher_slam_map]: Map to reference: (0.55, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301523.303775908] [lidar_publisher_slam_map]: Map to reference: (0.50, -0.25), Yaw: 0.00
+[rviz2-1] [INFO] [1732301547.740046180] [rviz2]: Message Filter dropping message: frame 'base_link' at time 1732301523.421 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[lidar_publisher_slam_map-3] [INFO] [1732301547.742479078] [lidar_publisher_slam_map]: Map to reference: (0.50, -0.25), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301547.745387575] [cartographer logger]: I20241122 12:52:27.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 2.74 Hz 3.65e-01 s +/- 1.58e-01 s (pulsed at 99.15% real time)
+[cartographer_node-4] [INFO] [1732301547.745792075] [cartographer logger]: I20241122 12:52:27.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 4.51 Hz 2.22e-01 s +/- -nan s (pulsed at 0.97% real time)
+[cartographer_node-4] [WARN] [1732301547.751429671] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301523.420640 according to authority Authority undetectable
+[cartographer_node-4] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[rviz2-1] [WARN] [1732301547.751986471] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301523.420640 according to authority Authority undetectable
+[rviz2-1] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[lidar_publisher_slam_map-3] [INFO] [1732301547.866658984] [lidar_publisher_slam_map]: RAN MAP STEP! (162,144) aka (0.60,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301547.871807880] [lidar_publisher_slam_map]: Map to reference: (0.60, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301547.979026258] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301547.987936985] [lidar_publisher_slam_map]: RAN MAP STEP! (163,144) aka (0.65,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301547.993291231] [lidar_publisher_slam_map]: Map to reference: (0.65, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301548.141318669] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301548.145256391] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301548.158108415] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301548.162319854] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301548.166672642] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301548.172957762] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301548.176657793] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301548.186308452] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301548.193170614] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301548.352586252] [lidar_publisher_slam_map]: RAN MAP STEP! (164,144) aka (0.70,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301548.355706125] [lidar_publisher_slam_map]: Map to reference: (0.70, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301548.868695597] [lidar_publisher_slam_map]: RAN MAP STEP! (165,144) aka (0.75,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301548.873717277] [lidar_publisher_slam_map]: Map to reference: (0.75, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301548.975597184] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[rviz2-1] [INFO] [1732301549.111342582] [rviz2]: Trying to create a map of size 73 x 39 using 1 swatches
+[lidar_publisher_slam_map-3] [INFO] [1732301549.350934410] [lidar_publisher_slam_map]: RAN MAP STEP! (166,144) aka (0.80,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301549.354212499] [lidar_publisher_slam_map]: Map to reference: (0.80, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301549.852047100] [lidar_publisher_slam_map]: RAN MAP STEP! (167,144) aka (0.85,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301549.855728247] [lidar_publisher_slam_map]: Map to reference: (0.85, -0.30), Yaw: 0.00
+[rviz2-1] [INFO] [1732301550.100689446] [rviz2]: Trying to create a map of size 73 x 51 using 1 swatches
+[lidar_publisher_slam_map-3] [INFO] [1732301550.356665853] [lidar_publisher_slam_map]: RAN MAP STEP! (168,144) aka (0.90,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301550.360781684] [lidar_publisher_slam_map]: Map to reference: (0.90, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301550.852236747] [lidar_publisher_slam_map]: RAN MAP STEP! (168,145) aka (0.90,-0.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301550.855552787] [lidar_publisher_slam_map]: Map to reference: (0.90, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301550.954758137] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[rviz2-1] [INFO] [1732301551.091917859] [rviz2]: Trying to create a map of size 73 x 52 using 1 swatches
+[lidar_publisher_slam_map-3] [INFO] [1732301551.355825902] [lidar_publisher_slam_map]: RAN MAP STEP! (169,145) aka (0.95,-0.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301551.363778071] [lidar_publisher_slam_map]: Map to reference: (0.95, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301551.855162185] [lidar_publisher_slam_map]: RAN MAP STEP! (168,145) aka (0.90,-0.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301551.863040562] [lidar_publisher_slam_map]: Map to reference: (0.90, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301552.350505929] [lidar_publisher_slam_map]: REINITIALIZING!
+[lidar_publisher_slam_map-3] [INFO] [1732301552.352748094] [lidar_publisher_slam_map]: Map to reference: (0.95, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301552.557415223] [lidar_publisher_slam_map]: Map to reference: (0.90, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301552.764181976] [lidar_publisher_slam_map]: Map to reference: (0.90, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301552.993006737] [lidar_publisher_slam_map]: Map to reference: (0.85, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301553.183608636] [lidar_publisher_slam_map]: Map to reference: (0.80, -0.30), Yaw: 0.00
+[rviz2-1] [INFO] [1732301578.714746045] [rviz2]: Message Filter dropping message: frame 'base_link' at time 1732301553.280 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[lidar_publisher_slam_map-3] [INFO] [1732301578.716222829] [lidar_publisher_slam_map]: Map to reference: (0.80, -0.30), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301578.717710511] [cartographer logger]: I20241122 12:52:58.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 2.76 Hz 3.63e-01 s +/- 1.60e-01 s (pulsed at 100.08% real time)
+[cartographer_node-4] [INFO] [1732301578.717861449] [cartographer logger]: I20241122 12:52:58.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 4.98 Hz 2.01e-01 s +/- -nan s (pulsed at 0.84% real time)
+[cartographer_node-4] [WARN] [1732301578.720577181] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301553.280170 according to authority Authority undetectable
+[cartographer_node-4] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[rviz2-1] [WARN] [1732301578.720962001] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301553.280170 according to authority Authority undetectable
+[rviz2-1] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[lidar_publisher_slam_map-3] [INFO] [1732301578.834045142] [lidar_publisher_slam_map]: RAN MAP STEP! (168,144) aka (0.90,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301578.842332665] [lidar_publisher_slam_map]: Map to reference: (0.90, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301578.962305053] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301578.966225590] [lidar_publisher_slam_map]: RAN MAP STEP! (169,144) aka (0.95,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301578.969967991] [lidar_publisher_slam_map]: Map to reference: (0.95, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301579.096918066] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301579.102821633] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301579.110797732] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301579.114190901] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301579.117387899] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301579.120383131] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301579.123337181] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301579.125684971] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301579.130010003] [lidar_publisher_slam_map]: Got goal: [172, 146]
+[lidar_publisher_slam_map-3] [INFO] [1732301579.355349314] [lidar_publisher_slam_map]: RAN MAP STEP! (170,145) aka (1.00,-0.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301579.364975507] [lidar_publisher_slam_map]: Map to reference: (1.00, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301579.850833841] [lidar_publisher_slam_map]: RAN MAP STEP! (171,145) aka (1.05,-0.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301579.854104739] [lidar_publisher_slam_map]: Map to reference: (1.05, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301580.354152563] [lidar_publisher_slam_map]: RAN MAP STEP! (172,146) aka (1.10,-0.20)
+[objective_selector-6] [INFO] [1732301580.358457959] [objective_selector]: GOAL REACHED; REMAINING ENERGY: 443.20758283639617
+[lidar_publisher_slam_map-3] [INFO] [1732301580.360163958] [lidar_publisher_slam_map]: Map to reference: (1.10, -0.20), Yaw: 0.00
+[objective_selector-6] [INFO] [1732301580.361781957] [objective_selector]: GOING TO NEW GOAL AT (158,123)
+[lidar_publisher_slam_map-3] [INFO] [1732301580.446689493] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.015466429] [lidar_publisher_slam_map]: RAN MAP STEP! (171,145) aka (1.05,-0.25)
+[rviz2-1] [INFO] [1732301602.016867068] [rviz2]: Message Filter dropping message: frame 'base_link' at time 1732301580.443 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[lidar_publisher_slam_map-3] [INFO] [1732301602.018516186] [lidar_publisher_slam_map]: Map to reference: (1.05, -0.25), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301602.019830541] [cartographer logger]: I20241122 12:53:22.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 3.04 Hz 3.29e-01 s +/- 1.89e-01 s (pulsed at 101.52% real time)
+[cartographer_node-4] [INFO] [1732301602.019980803] [cartographer logger]: I20241122 12:53:22.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 2.21 Hz 4.53e-01 s +/- -nan s (pulsed at 2.09% real time)
+[cartographer_node-4] [WARN] [1732301602.023850897] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301580.442997 according to authority Authority undetectable
+[cartographer_node-4] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[rviz2-1] [WARN] [1732301602.024349046] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301580.442997 according to authority Authority undetectable
+[rviz2-1] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[lidar_publisher_slam_map-3] [INFO] [1732301602.164526887] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.179728216] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.184473904] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.187054976] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.189253646] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.198144709] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.204000425] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.210389815] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.217475348] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.224799171] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301602.362677148] [lidar_publisher_slam_map]: RAN MAP STEP! (170,144) aka (1.00,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301602.366689745] [lidar_publisher_slam_map]: Map to reference: (1.00, -0.30), Yaw: 0.00
+[rviz2-1] [INFO] [1732301602.831055195] [rviz2]: Trying to create a map of size 74 x 52 using 1 swatches
+[lidar_publisher_slam_map-3] [INFO] [1732301602.853265079] [lidar_publisher_slam_map]: RAN MAP STEP! (169,143) aka (0.95,-0.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301602.857679275] [lidar_publisher_slam_map]: Map to reference: (0.95, -0.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301603.068577217] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301603.351830904] [lidar_publisher_slam_map]: RAN MAP STEP! (168,142) aka (0.90,-0.40)
+[lidar_publisher_slam_map-3] [INFO] [1732301603.355746801] [lidar_publisher_slam_map]: Map to reference: (0.90, -0.40), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301603.853106627] [lidar_publisher_slam_map]: RAN MAP STEP! (167,141) aka (0.85,-0.45)
+[lidar_publisher_slam_map-3] [INFO] [1732301603.859947622] [lidar_publisher_slam_map]: Map to reference: (0.85, -0.45), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301603.867356616] [cartographer logger]: I20241122 12:53:23.-2147483648 55469 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[cartographer_node-4] [INFO] [1732301603.867682516] [cartographer logger]: I20241122 12:53:23.-2147483648 55469 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-4] [INFO] [1732301603.867883816] [cartographer logger]: I20241122 12:53:23.-2147483648 55469 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-4] Count: 0
+[lidar_publisher_slam_map-3] [INFO] [1732301604.486504451] [lidar_publisher_slam_map]: RAN MAP STEP! (166,140) aka (0.80,-0.50)
+[lidar_publisher_slam_map-3] [INFO] [1732301604.492736746] [lidar_publisher_slam_map]: Map to reference: (0.80, -0.50), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301604.852175576] [lidar_publisher_slam_map]: RAN MAP STEP! (165,140) aka (0.75,-0.50)
+[lidar_publisher_slam_map-3] [INFO] [1732301604.856887572] [lidar_publisher_slam_map]: Map to reference: (0.75, -0.50), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301604.990732372] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301605.352839299] [lidar_publisher_slam_map]: RAN MAP STEP! (164,141) aka (0.70,-0.45)
+[lidar_publisher_slam_map-3] [INFO] [1732301605.360002694] [lidar_publisher_slam_map]: Map to reference: (0.70, -0.45), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301605.852943858] [lidar_publisher_slam_map]: RAN MAP STEP! (163,141) aka (0.65,-0.45)
+[lidar_publisher_slam_map-3] [INFO] [1732301605.857338766] [lidar_publisher_slam_map]: Map to reference: (0.65, -0.45), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301606.352771384] [lidar_publisher_slam_map]: RAN MAP STEP! (162,141) aka (0.60,-0.45)
+[lidar_publisher_slam_map-3] [INFO] [1732301606.360750760] [lidar_publisher_slam_map]: Map to reference: (0.60, -0.45), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301607.027330852] [lidar_publisher_slam_map]: RAN MAP STEP! (161,141) aka (0.55,-0.45)
+[lidar_publisher_slam_map-3] [INFO] [1732301607.034263930] [lidar_publisher_slam_map]: Map to reference: (0.55, -0.45), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301607.168918651] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301607.351757073] [lidar_publisher_slam_map]: RAN MAP STEP! (160,141) aka (0.50,-0.45)
+[lidar_publisher_slam_map-3] [INFO] [1732301607.361027353] [lidar_publisher_slam_map]: Map to reference: (0.50, -0.45), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301607.855702293] [lidar_publisher_slam_map]: RAN MAP STEP! (159,141) aka (0.45,-0.45)
+[lidar_publisher_slam_map-3] [INFO] [1732301607.860373368] [lidar_publisher_slam_map]: Map to reference: (0.45, -0.45), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301608.351231118] [lidar_publisher_slam_map]: RAN MAP STEP! (158,142) aka (0.40,-0.40)
+[lidar_publisher_slam_map-3] [INFO] [1732301608.355735066] [lidar_publisher_slam_map]: Map to reference: (0.40, -0.40), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301608.853867087] [lidar_publisher_slam_map]: RAN MAP STEP! (157,142) aka (0.35,-0.40)
+[lidar_publisher_slam_map-3] [INFO] [1732301608.857019956] [lidar_publisher_slam_map]: Map to reference: (0.35, -0.40), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301608.990193451] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301609.464781582] [lidar_publisher_slam_map]: RAN MAP STEP! (156,142) aka (0.30,-0.40)
+[lidar_publisher_slam_map-3] [INFO] [1732301609.469620163] [lidar_publisher_slam_map]: Map to reference: (0.30, -0.40), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301609.852483825] [lidar_publisher_slam_map]: RAN MAP STEP! (155,142) aka (0.25,-0.40)
+[lidar_publisher_slam_map-3] [INFO] [1732301609.858036638] [lidar_publisher_slam_map]: Map to reference: (0.25, -0.40), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301610.354793147] [lidar_publisher_slam_map]: RAN MAP STEP! (154,142) aka (0.20,-0.40)
+[lidar_publisher_slam_map-3] [INFO] [1732301610.361399008] [lidar_publisher_slam_map]: Map to reference: (0.20, -0.40), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301612.542469531] [lidar_publisher_slam_map]: RAN MAP STEP! (153,142) aka (0.15,-0.40)
+[lidar_publisher_slam_map-3] [INFO] [1732301612.551553861] [lidar_publisher_slam_map]: Map to reference: (0.15, -0.40), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301612.838425869] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301612.852928465] [lidar_publisher_slam_map]: RAN MAP STEP! (152,143) aka (0.10,-0.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301612.861521713] [lidar_publisher_slam_map]: Map to reference: (0.10, -0.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301613.103880843] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301613.408932630] [lidar_publisher_slam_map]: RAN MAP STEP! (151,143) aka (0.05,-0.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301613.419383978] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301613.853481269] [lidar_publisher_slam_map]: RAN MAP STEP! (150,143) aka (0.00,-0.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301613.858492979] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301614.352582294] [lidar_publisher_slam_map]: RAN MAP STEP! (149,142) aka (-0.05,-0.40)
+[lidar_publisher_slam_map-3] [INFO] [1732301614.356151309] [lidar_publisher_slam_map]: Map to reference: (-0.05, -0.40), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301614.855064470] [lidar_publisher_slam_map]: RAN MAP STEP! (148,141) aka (-0.10,-0.45)
+[lidar_publisher_slam_map-3] [INFO] [1732301614.858620158] [lidar_publisher_slam_map]: Map to reference: (-0.10, -0.45), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301614.981062470] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301615.354086341] [lidar_publisher_slam_map]: RAN MAP STEP! (149,140) aka (-0.05,-0.50)
+[lidar_publisher_slam_map-3] [INFO] [1732301615.359299641] [lidar_publisher_slam_map]: Map to reference: (-0.05, -0.50), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301615.852364994] [lidar_publisher_slam_map]: RAN MAP STEP! (150,139) aka (0.00,-0.55)
+[lidar_publisher_slam_map-3] [INFO] [1732301615.856735566] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.55), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301616.352489884] [lidar_publisher_slam_map]: RAN MAP STEP! (151,139) aka (0.05,-0.55)
+[lidar_publisher_slam_map-3] [INFO] [1732301616.356463815] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.55), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301616.887835649] [lidar_publisher_slam_map]: RAN MAP STEP! (151,138) aka (0.05,-0.60)
+[lidar_publisher_slam_map-3] [INFO] [1732301616.899570165] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.60), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301617.088936764] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301617.353984590] [lidar_publisher_slam_map]: RAN MAP STEP! (151,137) aka (0.05,-0.65)
+[lidar_publisher_slam_map-3] [INFO] [1732301617.360876818] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.65), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301617.852335548] [lidar_publisher_slam_map]: RAN MAP STEP! (151,138) aka (0.05,-0.60)
+[lidar_publisher_slam_map-3] [INFO] [1732301617.854770030] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.60), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301618.352689697] [lidar_publisher_slam_map]: REINITIALIZING!
+[lidar_publisher_slam_map-3] [INFO] [1732301618.358878751] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.65), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301618.819937629] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.60), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301618.822152294] [cartographer logger]: I20241122 12:53:38.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 1.84 Hz 5.45e-01 s +/- 3.21e-01 s (pulsed at 110.58% real time)
+[cartographer_node-4] [INFO] [1732301618.822315094] [cartographer logger]: I20241122 12:53:38.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 1.81 Hz 5.52e-01 s +/- 3.33e-01 s (pulsed at 112.78% real time)
+[lidar_publisher_slam_map-3] [INFO] [1732301619.013900391] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.55), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301619.216921464] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.55), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301619.425371582] [lidar_publisher_slam_map]: Map to reference: (-0.05, -0.50), Yaw: 0.00
+[rviz2-1] [INFO] [1732301642.861771372] [rviz2]: Message Filter dropping message: frame 'base_link' at time 1732301619.469 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[lidar_publisher_slam_map-3] [INFO] [1732301642.865273843] [lidar_publisher_slam_map]: Map to reference: (-0.05, -0.50), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301642.867459838] [cartographer logger]: I20241122 12:54:02.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 1.93 Hz 5.18e-01 s +/- 3.25e-01 s (pulsed at 113.25% real time)
+[cartographer_node-4] [INFO] [1732301642.867762576] [cartographer logger]: I20241122 12:54:02.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 6.58 Hz 1.52e-01 s +/- -nan s (pulsed at 0.65% real time)
+[cartographer_node-4] [WARN] [1732301642.872062130] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301619.469250 according to authority Authority undetectable
+[cartographer_node-4] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[rviz2-1] [WARN] [1732301642.872917535] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301619.469250 according to authority Authority undetectable
+[rviz2-1] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[lidar_publisher_slam_map-3] [INFO] [1732301643.029019436] [lidar_publisher_slam_map]: RAN MAP STEP! (150,138) aka (0.00,-0.60)
+[lidar_publisher_slam_map-3] [INFO] [1732301643.035281133] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.60), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301643.183422396] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.194214602] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.199610331] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.207489466] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.213822010] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.218056417] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.223925087] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.230499522] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.238058253] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.243350421] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301643.378013532] [lidar_publisher_slam_map]: RAN MAP STEP! (150,137) aka (0.00,-0.65)
+[lidar_publisher_slam_map-3] [INFO] [1732301643.387372616] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.65), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301643.854544850] [lidar_publisher_slam_map]: RAN MAP STEP! (150,136) aka (0.00,-0.70)
+[lidar_publisher_slam_map-3] [INFO] [1732301643.863129564] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.70), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301644.353964320] [lidar_publisher_slam_map]: RAN MAP STEP! (150,135) aka (0.00,-0.75)
+[lidar_publisher_slam_map-3] [INFO] [1732301644.358150417] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.75), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301646.615495801] [lidar_publisher_slam_map]: RAN MAP STEP! (150,134) aka (0.00,-0.80)
+[lidar_publisher_slam_map-3] [INFO] [1732301646.620376998] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.80), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301646.739601108] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301646.853209622] [lidar_publisher_slam_map]: RAN MAP STEP! (150,133) aka (0.00,-0.85)
+[lidar_publisher_slam_map-3] [INFO] [1732301646.857990819] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.85), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301647.011571903] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301647.350948048] [lidar_publisher_slam_map]: RAN MAP STEP! (150,132) aka (0.00,-0.90)
+[lidar_publisher_slam_map-3] [INFO] [1732301647.355378045] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.90), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301647.853473470] [lidar_publisher_slam_map]: RAN MAP STEP! (150,131) aka (0.00,-0.95)
+[lidar_publisher_slam_map-3] [INFO] [1732301647.861363364] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.95), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301648.354390994] [lidar_publisher_slam_map]: RAN MAP STEP! (151,130) aka (0.05,-1.00)
+[lidar_publisher_slam_map-3] [INFO] [1732301648.358640990] [lidar_publisher_slam_map]: Map to reference: (0.05, -1.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301648.853112619] [lidar_publisher_slam_map]: RAN MAP STEP! (152,129) aka (0.10,-1.05)
+[lidar_publisher_slam_map-3] [INFO] [1732301648.856921716] [lidar_publisher_slam_map]: Map to reference: (0.10, -1.05), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301648.959661238] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301649.365891191] [lidar_publisher_slam_map]: RAN MAP STEP! (153,128) aka (0.15,-1.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301649.371948612] [lidar_publisher_slam_map]: Map to reference: (0.15, -1.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301649.852708383] [lidar_publisher_slam_map]: RAN MAP STEP! (154,127) aka (0.20,-1.15)
+[lidar_publisher_slam_map-3] [INFO] [1732301649.860877436] [lidar_publisher_slam_map]: Map to reference: (0.20, -1.15), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301650.351932375] [lidar_publisher_slam_map]: RAN MAP STEP! (155,126) aka (0.25,-1.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301650.355153722] [lidar_publisher_slam_map]: Map to reference: (0.25, -1.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301650.852313107] [lidar_publisher_slam_map]: RAN MAP STEP! (156,125) aka (0.30,-1.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301650.858660744] [lidar_publisher_slam_map]: Map to reference: (0.30, -1.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301650.983113000] [lidar_publisher_slam_map]: Got goal: [158, 123]
+[lidar_publisher_slam_map-3] [INFO] [1732301651.364215047] [lidar_publisher_slam_map]: RAN MAP STEP! (157,124) aka (0.35,-1.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301651.367649794] [lidar_publisher_slam_map]: Map to reference: (0.35, -1.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301651.853616595] [lidar_publisher_slam_map]: RAN MAP STEP! (158,123) aka (0.40,-1.35)
+[objective_selector-6] [INFO] [1732301651.857282159] [objective_selector]: GOAL REACHED; REMAINING ENERGY: 381.8588164866883
+[lidar_publisher_slam_map-3] [INFO] [1732301651.857471451] [lidar_publisher_slam_map]: Map to reference: (0.40, -1.35), Yaw: 0.00
+[objective_selector-6] [INFO] [1732301651.861462615] [objective_selector]: GOING TO NEW GOAL AT (188,127)
+[lidar_publisher_slam_map-3] [INFO] [1732301651.961916281] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301674.676150431] [lidar_publisher_slam_map]: RAN MAP STEP! (159,123) aka (0.45,-1.35)
+[rviz2-1] [INFO] [1732301674.682001944] [rviz2]: Message Filter dropping message: frame 'base_link' at time 1732301651.953 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[lidar_publisher_slam_map-3] [INFO] [1732301674.683592754] [lidar_publisher_slam_map]: Map to reference: (0.45, -1.35), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301674.685257697] [cartographer logger]: I20241122 12:54:34.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 1.78 Hz 5.62e-01 s +/- 4.65e-01 s (pulsed at 127.03% real time)
+[cartographer_node-4] [INFO] [1732301674.685378291] [cartographer logger]: I20241122 12:54:34.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 2.24 Hz 4.46e-01 s +/- -nan s (pulsed at 1.95% real time)
+[cartographer_node-4] [WARN] [1732301674.691384706] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301651.953101 according to authority Authority undetectable
+[cartographer_node-4] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[rviz2-1] [WARN] [1732301674.692423402] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301651.953101 according to authority Authority undetectable
+[rviz2-1] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[lidar_publisher_slam_map-3] [INFO] [1732301674.849045826] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301674.859115692] [lidar_publisher_slam_map]: RAN MAP STEP! (160,123) aka (0.50,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301674.874570962] [lidar_publisher_slam_map]: Map to reference: (0.50, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301675.054982718] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.065441944] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.071336739] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.081408756] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.086165389] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.089270727] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.093621173] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.101120801] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.106665220] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.113122320] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301675.361789350] [lidar_publisher_slam_map]: RAN MAP STEP! (161,123) aka (0.55,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301675.369182594] [lidar_publisher_slam_map]: Map to reference: (0.55, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301675.850621920] [lidar_publisher_slam_map]: RAN MAP STEP! (162,123) aka (0.60,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301675.853351922] [lidar_publisher_slam_map]: Map to reference: (0.60, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301676.352116469] [lidar_publisher_slam_map]: RAN MAP STEP! (163,123) aka (0.65,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301676.357136726] [lidar_publisher_slam_map]: Map to reference: (0.65, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301676.850541578] [lidar_publisher_slam_map]: RAN MAP STEP! (164,123) aka (0.70,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301676.852557365] [lidar_publisher_slam_map]: Map to reference: (0.70, -1.35), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301676.856559118] [cartographer logger]: I20241122 12:54:36.-2147483648 55472 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[cartographer_node-4] [INFO] [1732301676.856896126] [cartographer logger]: I20241122 12:54:36.-2147483648 55472 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-4] [INFO] [1732301676.857016439] [cartographer logger]: I20241122 12:54:36.-2147483648 55472 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-4] Count: 0
+[lidar_publisher_slam_map-3] [INFO] [1732301676.958250391] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301677.352550942] [lidar_publisher_slam_map]: RAN MAP STEP! (165,123) aka (0.75,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301677.356101355] [lidar_publisher_slam_map]: Map to reference: (0.75, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301677.853414357] [lidar_publisher_slam_map]: RAN MAP STEP! (166,123) aka (0.80,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301677.858466453] [lidar_publisher_slam_map]: Map to reference: (0.80, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301678.353427981] [lidar_publisher_slam_map]: RAN MAP STEP! (167,123) aka (0.85,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301678.360061376] [lidar_publisher_slam_map]: Map to reference: (0.85, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301681.006022932] [lidar_publisher_slam_map]: RAN MAP STEP! (168,123) aka (0.90,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301681.017675424] [lidar_publisher_slam_map]: Map to reference: (0.90, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301681.211449778] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301681.354335671] [lidar_publisher_slam_map]: RAN MAP STEP! (169,123) aka (0.95,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301681.371652358] [lidar_publisher_slam_map]: Map to reference: (0.95, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301681.868694884] [lidar_publisher_slam_map]: RAN MAP STEP! (170,123) aka (1.00,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301681.872395481] [lidar_publisher_slam_map]: Map to reference: (1.00, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301682.354135619] [lidar_publisher_slam_map]: RAN MAP STEP! (171,123) aka (1.05,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301682.358525016] [lidar_publisher_slam_map]: Map to reference: (1.05, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301682.852682244] [lidar_publisher_slam_map]: RAN MAP STEP! (172,123) aka (1.10,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301682.855564842] [lidar_publisher_slam_map]: Map to reference: (1.10, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301682.956528466] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301683.352368269] [lidar_publisher_slam_map]: RAN MAP STEP! (173,123) aka (1.15,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301683.355559666] [lidar_publisher_slam_map]: Map to reference: (1.15, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301683.858411947] [lidar_publisher_slam_map]: RAN MAP STEP! (174,123) aka (1.20,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301683.865254675] [lidar_publisher_slam_map]: Map to reference: (1.20, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301684.351181143] [lidar_publisher_slam_map]: RAN MAP STEP! (175,123) aka (1.25,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301684.354962298] [lidar_publisher_slam_map]: Map to reference: (1.25, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301684.854394648] [lidar_publisher_slam_map]: RAN MAP STEP! (176,123) aka (1.30,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301684.857648262] [lidar_publisher_slam_map]: Map to reference: (1.30, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301685.093415393] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301685.354130505] [lidar_publisher_slam_map]: RAN MAP STEP! (177,123) aka (1.35,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301685.357490269] [lidar_publisher_slam_map]: Map to reference: (1.35, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301685.854902103] [lidar_publisher_slam_map]: RAN MAP STEP! (178,123) aka (1.40,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301685.858235743] [lidar_publisher_slam_map]: Map to reference: (1.40, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301686.352530179] [lidar_publisher_slam_map]: RAN MAP STEP! (179,123) aka (1.45,-1.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301686.355236636] [lidar_publisher_slam_map]: Map to reference: (1.45, -1.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301686.850635563] [lidar_publisher_slam_map]: RAN MAP STEP! (180,124) aka (1.50,-1.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301686.854179027] [lidar_publisher_slam_map]: Map to reference: (1.50, -1.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301686.969551157] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301687.352899952] [lidar_publisher_slam_map]: RAN MAP STEP! (181,124) aka (1.55,-1.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301687.358059040] [lidar_publisher_slam_map]: Map to reference: (1.55, -1.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301687.854424775] [lidar_publisher_slam_map]: RAN MAP STEP! (182,124) aka (1.60,-1.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301687.859570938] [lidar_publisher_slam_map]: Map to reference: (1.60, -1.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301688.354918623] [lidar_publisher_slam_map]: RAN MAP STEP! (183,124) aka (1.65,-1.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301688.362063851] [lidar_publisher_slam_map]: Map to reference: (1.65, -1.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301688.853965973] [lidar_publisher_slam_map]: RAN MAP STEP! (184,124) aka (1.70,-1.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301688.860985709] [lidar_publisher_slam_map]: Map to reference: (1.70, -1.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301689.156635695] [lidar_publisher_slam_map]: Got goal: [188, 127]
+[lidar_publisher_slam_map-3] [INFO] [1732301689.351697040] [lidar_publisher_slam_map]: RAN MAP STEP! (185,125) aka (1.75,-1.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301689.355840337] [lidar_publisher_slam_map]: Map to reference: (1.75, -1.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301689.851861564] [lidar_publisher_slam_map]: RAN MAP STEP! (186,126) aka (1.80,-1.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301689.855650762] [lidar_publisher_slam_map]: Map to reference: (1.80, -1.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301690.353280288] [lidar_publisher_slam_map]: RAN MAP STEP! (187,126) aka (1.85,-1.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301690.356621485] [lidar_publisher_slam_map]: Map to reference: (1.85, -1.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301690.851944113] [lidar_publisher_slam_map]: RAN MAP STEP! (188,127) aka (1.90,-1.15)
+[lidar_publisher_slam_map-3] [INFO] [1732301690.854835110] [lidar_publisher_slam_map]: Map to reference: (1.90, -1.15), Yaw: 0.00
+[objective_selector-6] [INFO] [1732301690.854849810] [objective_selector]: GOAL REACHED; REMAINING ENERGY: 350.2019622371959
+[objective_selector-6] [INFO] [1732301690.857496908] [objective_selector]: RETURNING TO BASE AT MAP COORDS (150,150)
+[lidar_publisher_slam_map-3] [INFO] [1732301691.049050364] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.283113060] [lidar_publisher_slam_map]: RAN MAP STEP! (187,127) aka (1.85,-1.15)
+[rviz2-1] [INFO] [1732301719.284544067] [rviz2]: Message Filter dropping message: frame 'base_link' at time 1732301691.043 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[lidar_publisher_slam_map-3] [INFO] [1732301719.285861500] [lidar_publisher_slam_map]: Map to reference: (1.85, -1.15), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301719.287510674] [cartographer logger]: I20241122 12:55:19.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 1.79 Hz 5.58e-01 s +/- 4.09e-01 s (pulsed at 114.93% real time)
+[cartographer_node-4] [INFO] [1732301719.287650740] [cartographer logger]: I20241122 12:55:19.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 1.99 Hz 5.03e-01 s +/- -nan s (pulsed at 1.89% real time)
+[cartographer_node-4] [WARN] [1732301719.290020413] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301691.043369 according to authority Authority undetectable
+[cartographer_node-4] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[rviz2-1] [WARN] [1732301719.290337580] []: TF_OLD_DATA ignoring data from the past for frame base_link at time 1732301691.043369 according to authority Authority undetectable
+[rviz2-1] Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+[lidar_publisher_slam_map-3] [INFO] [1732301719.319990991] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.324407946] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.329102742] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.333462222] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.336025312] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.340652550] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.344069606] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.348659811] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.352206942] [lidar_publisher_slam_map]: RAN MAP STEP! (186,127) aka (1.80,-1.15)
+[lidar_publisher_slam_map-3] [INFO] [1732301719.354066857] [lidar_publisher_slam_map]: Map to reference: (1.80, -1.15), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301719.479339163] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.485507591] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301719.851966357] [lidar_publisher_slam_map]: RAN MAP STEP! (185,128) aka (1.75,-1.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301719.860733076] [lidar_publisher_slam_map]: Map to reference: (1.75, -1.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301720.665659121] [lidar_publisher_slam_map]: RAN MAP STEP! (184,129) aka (1.70,-1.05)
+[lidar_publisher_slam_map-3] [INFO] [1732301720.678056845] [lidar_publisher_slam_map]: Map to reference: (1.70, -1.05), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301720.853814712] [lidar_publisher_slam_map]: RAN MAP STEP! (184,128) aka (1.70,-1.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301720.858011026] [lidar_publisher_slam_map]: Map to reference: (1.70, -1.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301721.032172337] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301721.354489511] [lidar_publisher_slam_map]: RAN MAP STEP! (183,127) aka (1.65,-1.15)
+[lidar_publisher_slam_map-3] [INFO] [1732301721.360950906] [lidar_publisher_slam_map]: Map to reference: (1.65, -1.15), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301721.851204771] [lidar_publisher_slam_map]: RAN MAP STEP! (182,126) aka (1.60,-1.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301721.854513110] [lidar_publisher_slam_map]: Map to reference: (1.60, -1.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301722.350685428] [lidar_publisher_slam_map]: RAN MAP STEP! (181,126) aka (1.55,-1.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301722.354184159] [lidar_publisher_slam_map]: Map to reference: (1.55, -1.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301722.851413027] [lidar_publisher_slam_map]: RAN MAP STEP! (180,126) aka (1.50,-1.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301722.854120675] [lidar_publisher_slam_map]: Map to reference: (1.50, -1.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301722.955396307] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301723.361004302] [lidar_publisher_slam_map]: RAN MAP STEP! (179,126) aka (1.45,-1.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301723.366062898] [lidar_publisher_slam_map]: Map to reference: (1.45, -1.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301723.853184832] [lidar_publisher_slam_map]: RAN MAP STEP! (178,126) aka (1.40,-1.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301723.859006328] [lidar_publisher_slam_map]: Map to reference: (1.40, -1.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301724.381625235] [lidar_publisher_slam_map]: RAN MAP STEP! (177,127) aka (1.35,-1.15)
+[lidar_publisher_slam_map-3] [INFO] [1732301724.391862627] [lidar_publisher_slam_map]: Map to reference: (1.35, -1.15), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301724.884243357] [lidar_publisher_slam_map]: RAN MAP STEP! (176,127) aka (1.30,-1.15)
+[lidar_publisher_slam_map-3] [INFO] [1732301724.891325852] [lidar_publisher_slam_map]: Map to reference: (1.30, -1.15), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301725.073576815] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301725.354239204] [lidar_publisher_slam_map]: RAN MAP STEP! (175,127) aka (1.25,-1.15)
+[lidar_publisher_slam_map-3] [INFO] [1732301725.362668097] [lidar_publisher_slam_map]: Map to reference: (1.25, -1.15), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301725.854953569] [lidar_publisher_slam_map]: RAN MAP STEP! (174,128) aka (1.20,-1.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301725.861976514] [lidar_publisher_slam_map]: Map to reference: (1.20, -1.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301726.352961144] [lidar_publisher_slam_map]: RAN MAP STEP! (173,128) aka (1.15,-1.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301726.356157009] [lidar_publisher_slam_map]: Map to reference: (1.15, -1.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301726.851890244] [lidar_publisher_slam_map]: RAN MAP STEP! (172,128) aka (1.10,-1.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301726.855283467] [lidar_publisher_slam_map]: Map to reference: (1.10, -1.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301726.960206154] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301727.353047484] [lidar_publisher_slam_map]: RAN MAP STEP! (171,129) aka (1.05,-1.05)
+[lidar_publisher_slam_map-3] [INFO] [1732301727.358070263] [lidar_publisher_slam_map]: Map to reference: (1.05, -1.05), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301727.851862459] [lidar_publisher_slam_map]: RAN MAP STEP! (170,130) aka (1.00,-1.00)
+[lidar_publisher_slam_map-3] [INFO] [1732301727.854208849] [lidar_publisher_slam_map]: Map to reference: (1.00, -1.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301728.486771073] [lidar_publisher_slam_map]: RAN MAP STEP! (169,131) aka (0.95,-0.95)
+[lidar_publisher_slam_map-3] [INFO] [1732301728.495413216] [lidar_publisher_slam_map]: Map to reference: (0.95, -0.95), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301728.851038457] [lidar_publisher_slam_map]: RAN MAP STEP! (168,131) aka (0.90,-0.95)
+[lidar_publisher_slam_map-3] [INFO] [1732301728.853571022] [lidar_publisher_slam_map]: Map to reference: (0.90, -0.95), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301728.956763503] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301729.352903913] [lidar_publisher_slam_map]: RAN MAP STEP! (167,131) aka (0.85,-0.95)
+[lidar_publisher_slam_map-3] [INFO] [1732301729.355775278] [lidar_publisher_slam_map]: Map to reference: (0.85, -0.95), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301729.851950163] [lidar_publisher_slam_map]: RAN MAP STEP! (166,131) aka (0.80,-0.95)
+[lidar_publisher_slam_map-3] [INFO] [1732301729.854890644] [lidar_publisher_slam_map]: Map to reference: (0.80, -0.95), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301730.351619062] [lidar_publisher_slam_map]: RAN MAP STEP! (165,131) aka (0.75,-0.95)
+[lidar_publisher_slam_map-3] [INFO] [1732301730.353796461] [lidar_publisher_slam_map]: Map to reference: (0.75, -0.95), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301731.023671157] [lidar_publisher_slam_map]: RAN MAP STEP! (164,132) aka (0.70,-0.90)
+[lidar_publisher_slam_map-3] [INFO] [1732301731.027532954] [lidar_publisher_slam_map]: Map to reference: (0.70, -0.90), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301731.156881657] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301731.353709409] [lidar_publisher_slam_map]: RAN MAP STEP! (163,132) aka (0.65,-0.90)
+[lidar_publisher_slam_map-3] [INFO] [1732301731.359993305] [lidar_publisher_slam_map]: Map to reference: (0.65, -0.90), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301731.854353633] [lidar_publisher_slam_map]: RAN MAP STEP! (162,132) aka (0.60,-0.90)
+[lidar_publisher_slam_map-3] [INFO] [1732301731.862117427] [lidar_publisher_slam_map]: Map to reference: (0.60, -0.90), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301732.356252156] [lidar_publisher_slam_map]: RAN MAP STEP! (161,132) aka (0.55,-0.90)
+[lidar_publisher_slam_map-3] [INFO] [1732301732.361011052] [lidar_publisher_slam_map]: Map to reference: (0.55, -0.90), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301732.851344984] [lidar_publisher_slam_map]: RAN MAP STEP! (160,132) aka (0.50,-0.90)
+[lidar_publisher_slam_map-3] [INFO] [1732301732.855623280] [lidar_publisher_slam_map]: Map to reference: (0.50, -0.90), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301732.862318775] [cartographer logger]: I20241122 12:55:32.-2147483648 55469 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[cartographer_node-4] [INFO] [1732301732.862671375] [cartographer logger]: I20241122 12:55:32.-2147483648 55469 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-4] [INFO] [1732301732.862770175] [cartographer logger]: I20241122 12:55:32.-2147483648 55469 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-4] Count: 0
+[lidar_publisher_slam_map-3] [INFO] [1732301732.971845893] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301733.493375968] [lidar_publisher_slam_map]: RAN MAP STEP! (159,133) aka (0.45,-0.85)
+[lidar_publisher_slam_map-3] [INFO] [1732301733.499280030] [lidar_publisher_slam_map]: Map to reference: (0.45, -0.85), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301733.851452190] [lidar_publisher_slam_map]: RAN MAP STEP! (158,133) aka (0.40,-0.85)
+[lidar_publisher_slam_map-3] [INFO] [1732301733.855787287] [lidar_publisher_slam_map]: Map to reference: (0.40, -0.85), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301734.351818897] [lidar_publisher_slam_map]: RAN MAP STEP! (157,133) aka (0.35,-0.85)
+[lidar_publisher_slam_map-3] [INFO] [1732301734.354573478] [lidar_publisher_slam_map]: Map to reference: (0.35, -0.85), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301734.356101836] [cartographer logger]: I20241122 12:55:34.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 2.06 Hz 4.86e-01 s +/- 1.35e-01 s (pulsed at 99.86% real time)
+[cartographer_node-4] [INFO] [1732301734.356189561] [cartographer logger]: I20241122 12:55:34.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 2.01 Hz 4.98e-01 s +/- 1.33e-01 s (pulsed at 99.58% real time)
+[lidar_publisher_slam_map-3] [INFO] [1732301734.853810670] [lidar_publisher_slam_map]: RAN MAP STEP! (156,133) aka (0.30,-0.85)
+[lidar_publisher_slam_map-3] [INFO] [1732301734.857426092] [lidar_publisher_slam_map]: Map to reference: (0.30, -0.85), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301734.979502808] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301735.352834553] [lidar_publisher_slam_map]: RAN MAP STEP! (155,133) aka (0.25,-0.85)
+[lidar_publisher_slam_map-3] [INFO] [1732301735.355494534] [lidar_publisher_slam_map]: Map to reference: (0.25, -0.85), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301735.987154759] [lidar_publisher_slam_map]: RAN MAP STEP! (154,134) aka (0.20,-0.80)
+[lidar_publisher_slam_map-3] [INFO] [1732301735.991136298] [lidar_publisher_slam_map]: Map to reference: (0.20, -0.80), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301736.354448516] [lidar_publisher_slam_map]: RAN MAP STEP! (153,134) aka (0.15,-0.80)
+[lidar_publisher_slam_map-3] [INFO] [1732301736.364010626] [lidar_publisher_slam_map]: Map to reference: (0.15, -0.80), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301736.851415676] [lidar_publisher_slam_map]: RAN MAP STEP! (152,134) aka (0.10,-0.80)
+[lidar_publisher_slam_map-3] [INFO] [1732301736.854919448] [lidar_publisher_slam_map]: Map to reference: (0.10, -0.80), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301736.983877026] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301737.351964433] [lidar_publisher_slam_map]: RAN MAP STEP! (151,134) aka (0.05,-0.80)
+[lidar_publisher_slam_map-3] [INFO] [1732301737.355041864] [lidar_publisher_slam_map]: Map to reference: (0.05, -0.80), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301737.852749689] [lidar_publisher_slam_map]: RAN MAP STEP! (150,134) aka (0.00,-0.80)
+[lidar_publisher_slam_map-3] [INFO] [1732301737.855806954] [lidar_publisher_slam_map]: Map to reference: (0.00, -0.80), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301738.355538195] [lidar_publisher_slam_map]: RAN MAP STEP! (149,135) aka (-0.05,-0.75)
+[lidar_publisher_slam_map-3] [INFO] [1732301738.360188991] [lidar_publisher_slam_map]: Map to reference: (-0.05, -0.75), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301738.862766613] [lidar_publisher_slam_map]: RAN MAP STEP! (148,136) aka (-0.10,-0.70)
+[lidar_publisher_slam_map-3] [INFO] [1732301738.868982509] [lidar_publisher_slam_map]: Map to reference: (-0.10, -0.70), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301739.036951982] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301739.353272345] [lidar_publisher_slam_map]: RAN MAP STEP! (147,137) aka (-0.15,-0.65)
+[lidar_publisher_slam_map-3] [INFO] [1732301739.358981640] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.65), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301739.856008367] [lidar_publisher_slam_map]: RAN MAP STEP! (147,138) aka (-0.15,-0.60)
+[lidar_publisher_slam_map-3] [INFO] [1732301739.866806758] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.60), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301740.381848671] [lidar_publisher_slam_map]: RAN MAP STEP! (147,139) aka (-0.15,-0.55)
+[lidar_publisher_slam_map-3] [INFO] [1732301740.388841466] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.55), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301740.852470017] [lidar_publisher_slam_map]: RAN MAP STEP! (147,140) aka (-0.15,-0.50)
+[lidar_publisher_slam_map-3] [INFO] [1732301740.856795314] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.50), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301741.024823588] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301741.352501641] [lidar_publisher_slam_map]: RAN MAP STEP! (147,141) aka (-0.15,-0.45)
+[lidar_publisher_slam_map-3] [INFO] [1732301741.355137139] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.45), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301741.850486609] [lidar_publisher_slam_map]: RAN MAP STEP! (147,142) aka (-0.15,-0.40)
+[lidar_publisher_slam_map-3] [INFO] [1732301741.853142923] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.40), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301742.351985581] [lidar_publisher_slam_map]: RAN MAP STEP! (147,143) aka (-0.15,-0.35)
+[lidar_publisher_slam_map-3] [INFO] [1732301742.355591470] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.35), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301742.853458338] [lidar_publisher_slam_map]: RAN MAP STEP! (147,144) aka (-0.15,-0.30)
+[lidar_publisher_slam_map-3] [INFO] [1732301742.857895093] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.30), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301743.029442989] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[lidar_publisher_slam_map-3] [INFO] [1732301743.353116004] [lidar_publisher_slam_map]: RAN MAP STEP! (147,145) aka (-0.15,-0.25)
+[lidar_publisher_slam_map-3] [INFO] [1732301743.356878184] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.25), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301743.851118721] [lidar_publisher_slam_map]: RAN MAP STEP! (147,146) aka (-0.15,-0.20)
+[lidar_publisher_slam_map-3] [INFO] [1732301743.854784651] [lidar_publisher_slam_map]: Map to reference: (-0.15, -0.20), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301744.351678661] [lidar_publisher_slam_map]: RAN MAP STEP! (148,147) aka (-0.10,-0.15)
+[lidar_publisher_slam_map-3] [INFO] [1732301744.354791200] [lidar_publisher_slam_map]: Map to reference: (-0.10, -0.15), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301744.852016126] [lidar_publisher_slam_map]: RAN MAP STEP! (149,148) aka (-0.05,-0.10)
+[lidar_publisher_slam_map-3] [INFO] [1732301744.855595615] [lidar_publisher_slam_map]: Map to reference: (-0.05, -0.10), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301744.970739679] [lidar_publisher_slam_map]: Got goal: [150, 150]
+[rviz2-1] [INFO] [1732301745.337981919] [rviz2]: Trying to create a map of size 75 x 52 using 1 swatches
+[lidar_publisher_slam_map-3] [INFO] [1732301745.350530068] [lidar_publisher_slam_map]: RAN MAP STEP! (149,149) aka (-0.05,-0.05)
+[lidar_publisher_slam_map-3] [INFO] [1732301745.352774341] [lidar_publisher_slam_map]: Map to reference: (-0.05, -0.05), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301745.852260958] [lidar_publisher_slam_map]: RAN MAP STEP! (150,150) aka (0.00,0.00)
+[objective_selector-6] [INFO] [1732301745.854656206] [objective_selector]: GOAL REACHED; REMAINING ENERGY: 287.7461181144802
+[lidar_publisher_slam_map-3] [INFO] [1732301745.854801039] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[objective_selector-6] [INFO] [1732301745.857490904] [objective_selector]: BASE REACHED; MISSION COMPLETE
+[lidar_publisher_slam_map-3] [INFO] [1732301746.353660855] [lidar_publisher_slam_map]: GOAL REACHED!
+[lidar_publisher_slam_map-3] [INFO] [1732301746.364174848] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301746.854231779] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301749.058491538] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301749.392794987] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301749.853209840] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301750.352660865] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301750.854440988] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301751.352165622] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[cartographer_node-4] [INFO] [1732301751.353361321] [cartographer logger]: I20241122 12:55:51.-2147483648 55416 collated_trajectory_builder.cc:81] odom rate: 1.82 Hz 5.50e-01 s +/- 3.16e-01 s (pulsed at 111.58% real time)
+[cartographer_node-4] [INFO] [1732301751.353530446] [cartographer logger]: I20241122 12:55:51.-2147483648 55416 collated_trajectory_builder.cc:81] scan rate: 1.81 Hz 5.52e-01 s +/- 3.66e-01 s (pulsed at 112.50% real time)
+[lidar_publisher_slam_map-3] [INFO] [1732301751.852532695] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301752.351948270] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301752.852281060] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301753.352946600] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301753.853760365] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301754.352336090] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301754.851652848] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[lidar_publisher_slam_map-3] [INFO] [1732301755.351210598] [lidar_publisher_slam_map]: Map to reference: (0.00, 0.00), Yaw: 0.00
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[cartographer_occupancy_grid_node-5] [INFO] [1732301755.394852973] [rclcpp]: signal_handler(signum=2)
+[ERROR] [xterm-2]: process has died [pid 55319, exit code 2, cmd 'xterm -e /opt/ros/jazzy/lib/key_teleop/key_teleop --ros-args -r __node:=key_teleop'].
+[objective_selector-6] Shutdown initiated.
+[lidar_publisher_slam_map-3] GOT STUCK
+[lidar_publisher_slam_map-3] GOT STUCK
+[lidar_publisher_slam_map-3] TIED - NEED TO DECIDE WHERE TO GO
+[lidar_publisher_slam_map-3] TIED - NEED TO DECIDE WHERE TO GO
+[lidar_publisher_slam_map-3] Shutdown initiated.
+[cartographer_node-4] [INFO] [1732301755.395396098] [rclcpp]: signal_handler(signum=2)
+[cartographer_node-4] [INFO] [1732301755.398653379] [cartographer logger]: I20241122 12:55:55.-2147483648 55416 node.cpp:569] Shutdown the subscriber of [scan]
+[cartographer_node-4] [INFO] [1732301755.400069352] [cartographer logger]: I20241122 12:55:55.-2147483648 55416 node.cpp:569] Shutdown the subscriber of [odom]
+[cartographer_node-4] [INFO] [1732301755.400135444] [cartographer logger]: I20241122 12:55:55.-2147483648 55416 map_builder_bridge.cpp:152] Finishing trajectory with ID '0'...
+[cartographer_node-4] [WARN] [1732301755.402642342] [cartographer logger]: W20241122 12:55:55.-2147483648 55416 node.cpp:773] Can't run final optimization if there are one or more active trajectories. Trying to finish trajectory with ID 0 now.
+[cartographer_node-4] [INFO] [1732301755.402692575] [cartographer logger]: I20241122 12:55:55.-2147483648 55416 node.cpp:551] Trajectory 0 already pending to finish.
+[cartographer_node-4] [INFO] [1732301755.402729884] [cartographer logger]: I20241122 12:55:55.-2147483648 55416 map_builder_bridge.cpp:161] Running final trajectory optimization...
+[cartographer_node-4] [INFO] [1732301755.402818709] [cartographer logger]: I20241122 12:55:55.-2147483648 55471 pose_graph_2d.cc:538] Remaining work items in queue: 2
+[cartographer_node-4] [INFO] [1732301755.402882692] [cartographer logger]: I20241122 12:55:55.-2147483648 55471 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-4] [INFO] [1732301755.402920367] [cartographer logger]: I20241122 12:55:55.-2147483648 55471 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-4] Count: 0
+[rviz2-1] [INFO] [1732301755.394928598] [rclcpp]: signal_handler(signum=2)
+[cartographer_node-4] [INFO] [1732301755.415239899] [cartographer logger]: I20241122 12:55:55.-2147483648 55471 pose_graph_2d.cc:538] Remaining work items in queue: 1
+[cartographer_node-4] [INFO] [1732301755.415333124] [cartographer logger]: I20241122 12:55:55.-2147483648 55471 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-4] [INFO] [1732301755.415377124] [cartographer logger]: I20241122 12:55:55.-2147483648 55471 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-4] Count: 0
+[cartographer_node-4] [INFO] [1732301755.429556205] [cartographer logger]: I20241122 12:55:55.-2147483648 55470 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-4] [INFO] [1732301755.429635497] [cartographer logger]: I20241122 12:55:55.-2147483648 55470 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-4] Count: 0
+[cartographer_node-4] [KOptimizing: Done.     
+[cartographer_node-4] [INFO] [1732301755.462384764] [cartographer logger]: I20241122 12:55:55.-2147483648 55472 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-4] [INFO] [1732301755.462546830] [cartographer logger]: I20241122 12:55:55.-2147483648 55472 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-4] Count: 0
+[cartographer_node-4] [KOptimizing: Done.     
+[INFO] [cartographer_occupancy_grid_node-5]: process has finished cleanly [pid 55417]
+[INFO] [cartographer_node-4]: process has finished cleanly [pid 55416]
+[INFO] [objective_selector-6]: process has finished cleanly [pid 55418]
+[INFO] [rviz2-1]: process has finished cleanly [pid 55318]
+[INFO] [lidar_publisher_slam_map-3]: process has finished cleanly [pid 55320]
