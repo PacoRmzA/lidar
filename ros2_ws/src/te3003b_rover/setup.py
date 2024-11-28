@@ -34,7 +34,8 @@ setup(
         'keyboard_movement = te3003b_rover.keyboard_movement:main',
         'path_planner = te3003b_rover.path_planner:main',
         'objective_selector = te3003b_rover.objective_selector:main',
-        'rpc_image_processor = te3003b_rover.rpc_image_processor:main'
+        'rpc_image_processor = te3003b_rover.rpc_image_processor:main',
+        'odometry_publisher = te3003b_rover.odometry_publisher:main'
         ],
     },
 )
