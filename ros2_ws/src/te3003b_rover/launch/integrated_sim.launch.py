@@ -9,7 +9,7 @@ from launch.event_handlers.on_process_start import OnProcessStart
 def generate_launch_description():
 
     control_param = 'path_planner'
-    planner_map_size = 300
+    planner_map_size = 500
     
     rviz = Node(
             package='rviz2',
@@ -44,13 +44,14 @@ def generate_launch_description():
             package='cartographer_ros',
             executable='cartographer_node',
             name='cartographer',
-            #output='screen',
+            output='log',
             parameters=[{
                 'use_sim_time': True
             }],
             arguments=[
                 '-configuration_directory', os.path.join(get_package_share_directory('te3003b_rover'), 'config'),
-                '-configuration_basename', 'cartographer.lua'  # Ensure this file exists in your config folder
+                '-configuration_basename', 'cartographer.lua',  # Ensure this file exists in your config folder
+                '--minloglevel', '2'
             ],
             remappings=[('/scan', '/scan')]
         )
@@ -59,7 +60,7 @@ def generate_launch_description():
             package='cartographer_ros',
             executable='cartographer_occupancy_grid_node',
             name='cartographer_occupancy_grid',
-            #output='screen',
+            output='log',
             parameters=[{
                 'use_sim_time': True,
                 'resolution': 0.05
@@ -72,9 +73,8 @@ def generate_launch_description():
             name='objective_selector',
             output='screen',
             parameters=[{
-                #'goals': [188,127,  158,123,  172,146],
-                'goals': [188,130,  213,140,  172,153],
-                'max_distance': 200.0,
+                'goals': [305,270,  333,230,  292,147],
+                'max_distance': 500.0,
                 'planner_map_size': planner_map_size
             }],
         )

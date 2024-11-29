@@ -4,12 +4,10 @@ import numpy as np
 import cv2 as cv
 import rclpy.duration
 from rclpy.node import Node
-from geometry_msgs.msg import TransformStamped
 from geometry_msgs.msg import Twist, Pose, Point
 from geometry_msgs.msg import Vector3
 import rclpy.timer
 import rclpy.wait_for_message
-from tf2_ros import TransformBroadcaster
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import OccupancyGrid
 from nav_msgs.msg import Odometry
@@ -21,22 +19,16 @@ class LidarPublisher(Node):
     def __init__(self):
         super().__init__('lidar_publisher')
 
-        self.declare_parameter('control', 'keyboard')
         self.declare_parameter('planner_map_size', 300)
-        self.control = self.get_parameter('control').get_parameter_value().string_value
         side_size = self.get_parameter('planner_map_size').get_parameter_value().integer_value
         # Publisher for LaserScan
         self.lidar_publisher_ = self.create_publisher(LaserScan, 'scan', 10)
         self.map_pos_publisher_ = self.create_publisher(Vector3, 'planner_pos', 10)
-        #self.odom_publisher_ = self.create_publisher(Odometry, 'odom', 10)
         self.pose_publisher_ = self.create_publisher(Pose, 'rover_pose', 10)
         self.left_motor_pub = self.create_publisher(Float32, '/leftMotorSpeed', 10)
         self.right_motor_pub = self.create_publisher(Float32, '/rightMotorSpeed', 10)
         self.timer_rate = 0.1
         self.timer = self.create_timer(self.timer_rate, self.timer_callback)  # Publish every 0.1 seconds
-        
-        # Set up the TransformBroadcaster for TF messages
-        self.tf_broadcaster = TransformBroadcaster(self)
         
         # Path planner variables
         self.alg = None
@@ -45,9 +37,10 @@ class LidarPublisher(Node):
         self.goal = None
 
         self.controlled = False
-        self.eps = 0.05
+        self.eps_lin = 0.1
+        self.eps_ang = 15 * math.pi/180
         self.k_lin = 0.5
-        self.k_ang = 0.8
+        self.k_ang = 0.1
         self.wheel_radius = 0.05
         self.wheel_base = 0.3
 
@@ -65,7 +58,6 @@ class LidarPublisher(Node):
         self.position_x = 0.0
         self.position_y = 0.0
         self.yaw = 0.0
-        #self.broadcast_transforms()
 
         # LiDAR setup parameters
         self.max_range = 4.0
@@ -76,19 +68,15 @@ class LidarPublisher(Node):
         # Subscribe to the /map topic
         self.create_subscription(Vector3, '/goal', self.goal_callback, 10)
         self.create_subscription(OccupancyGrid, '/map', self.map_callback, 10)
-        self.create_subscription(Twist, '/key_vel', self.key_callback, 10)
         self.create_subscription(Odometry, '/odom', self.odom_callback, 10)
 
         # Initialize variable to hold map data
         self.map_data = None
         self.map_res = 0.05
         self.scan_range = 5
-        self.key_input_vel = Twist(linear=self.list_to_vector3(), angular=self.list_to_vector3())
-        self.zero_cov_36 = [0.0]*36
 
         self.start_time = self.get_clock().now()
 
-        #self.planner_twist = Twist(linear=self.list_to_vector3(), angular=self.list_to_vector3())
         #self.map_updates = 1
         self.map_size = [side_size, side_size]
         self.nav_start_x = self.map_size[1] // 2
@@ -113,26 +101,11 @@ class LidarPublisher(Node):
     
     def timer_callback(self):
         if self.controlled:
-            match self.control:
-                case 'path_planner':
-                    self.iterate_nav_alg()
-                case 'avoid_obstacles':
-                    self.navigate_based_on_map()
-                case _:
-                    self.navigate_based_on_keystrokes()
+            self.publish_motor_speeds(0.0, 0.0)
+            self.iterate_nav_alg()
         else:
             self.control_pos()
 
-        # Broadcast transformation for ROS2 TFs
-        #self.broadcast_transforms()
-
-        # Publish sim Odometry data
-        #self.publish_odom_data()
-
-        # Send position and orientation to CoppeliaSim
-        #self.set_lidar_position_in_coppeliasim()
-
-        # Publish LiDAR data as usual
         self.publish_lidar_data()
 
     def iterate_nav_alg(self):            
@@ -153,8 +126,6 @@ class LidarPublisher(Node):
                 self.goal_start_x = self.path_to_start[0][0] if len(self.path_to_start) < 5 else self.path_to_start[-5][0]
                 self.goal_start_y = self.path_to_start[0][1] if len(self.path_to_start) < 5 else self.path_to_start[-5][1]
                 self.walking_back = True
-                #self.walk_back()
-                #self.init_planner()
             else:
                 next_point = self.alg.StateIDToCoods(self.s_start)
                 self.map_pos_x = next_point[0]
@@ -162,8 +133,6 @@ class LidarPublisher(Node):
                 self.setpoint_position_x = (next_point[0] - self.nav_start_x)*self.map_res
                 self.setpoint_position_y = (next_point[1] - self.nav_start_y)*self.map_res # img/alg coords are different than map coords
                 self.controlled = False
-                #self.planner_twist.linear.x = (next_point[0] - self.path_to_start[-1][0]) * self.map_res * (1/self.timer_rate)
-                #self.planner_twist.linear.y = (next_point[1] - self.path_to_start[-1][1]) * self.map_res * (1/self.timer_rate)
                 self.get_logger().info(f"RAN MAP STEP! ({next_point[0]},{next_point[1]}) aka ({self.position_x:.2f},{self.position_y:.2f})")
                 self.path_to_start.append(next_point)
                 self.map_pos_publisher_.publish(Vector3(x=float(self.map_pos_x), y=float(self.map_pos_y), z=0.0))
@@ -173,61 +142,6 @@ class LidarPublisher(Node):
             self.map_pos_x, self.map_pos_x = self.alg.StateIDToCoods(self.s_start)
             self.map_pos_publisher_.publish(Vector3(x=float(self.map_pos_x), y=float(self.map_pos_y), z=0.0))
             self.done = True
-
-    def navigate_based_on_map(self):
-        # Parameters for navigation behavior
-        movement_step = 0.005  # Step size for movement in meters
-        rotation_step = 0.005  # Step size for rotation in radians
-
-        # Define a target point slightly ahead of the current position
-        target_x = self.position_x + movement_step * math.cos(self.yaw)
-        target_y = self.position_y + movement_step * math.sin(self.yaw)
-
-        # Check if there’s an obstacle in the target position based on the map
-        obstacle_detected = self.check_obstacle_in_map(target_x, target_y)
-
-        if obstacle_detected:
-            # If an obstacle is detected, decide to turn left
-            self.yaw += rotation_step  # Turn left as an example
-            self.get_logger().info("Obstacle detected; turning left.")
-        else:
-            # If no obstacle, move forward
-            self.position_x = target_x
-            self.position_y = target_y
-            self.get_logger().info(f"Moving to target position: ({self.position_x}, {self.position_y})")
-
-    def navigate_based_on_keystrokes(self):
-        self.position_x += (self.key_input_vel.linear.x * math.cos(self.yaw) \
-                                    + self.key_input_vel.linear.y * -math.sin(self.yaw))
-        self.position_y += (self.key_input_vel.linear.x * math.sin(self.yaw) \
-                                    + self.key_input_vel.linear.y * math.cos(self.yaw))
-        self.yaw += self.key_input_vel.angular.z
-        #self.get_logger().info(f"Moving to target position: ({self.position_x}, {self.position_y}, {self.yaw})")
-
-    def check_obstacle_in_map(self, target_x, target_y):
-        # Check if the map data is available
-        if self.map_data is None:
-            return False  # No map data available
-
-        # Get the map's metadata
-        resolution = self.map_data.info.resolution  # Size of each cell in meters
-        origin_x = self.map_data.info.origin.position.x  # X position of the map's origin
-        origin_y = self.map_data.info.origin.position.y  # Y position of the map's origin
-
-        # Convert target position to map coordinates
-        map_x = int((target_x - origin_x) / resolution)
-        map_y = int((target_y - origin_y) / resolution)
-
-        # Check if the indices are within the bounds of the map
-        if 0 <= map_x < self.map_data.info.width and 0 <= map_y < self.map_data.info.height:
-            index = map_y * self.map_data.info.width + map_x  # Convert 2D coordinates to 1D index
-            occupancy_value = self.map_data.data[index]  # Get the occupancy value
-
-            # Assuming a value of 100 means occupied, 0 means free
-            if occupancy_value > 12:  # Threshold for obstacle detection
-                return True  # Obstacle detected
-
-        return False  # No obstacle detected
 
     def map_callback(self, msg):
         # Store the latest map data
@@ -286,47 +200,25 @@ class LidarPublisher(Node):
         self.yaw = math.atan2(siny_cosp, cosy_cosp)
 
     def control_pos(self):
-        if int(time.time()) % 3 == 0:
+        if int(time.time()*10) % 30 == 0:
             self.get_logger().info(f"Controlling to ({self.setpoint_position_x:.2f},{self.setpoint_position_y:.2f}) Cur pos ({self.position_x:.2f},{self.position_y:.2f})")
         error_xy = [self.setpoint_position_x - self.position_x, self.setpoint_position_y - self.position_y]
-        if abs(error_xy[0]) < self.eps and abs(error_xy[1]) < self.eps:
+        if abs(error_xy[0]) < self.eps_lin and abs(error_xy[1]) < self.eps_lin:
             self.controlled = True
-            self.get_logger().info(f"Successfully controlled pos to ({self.setpoint_position_x:.2f},{self.setpoint_position_y:.2f})")
+            self.publish_motor_speeds(0.0, 0.0)
+            #self.get_logger().info(f"Successfully controlled pos to ({self.setpoint_position_x:.2f},{self.setpoint_position_y:.2f})")
         else:
             theta_d = math.atan2(error_xy[1], error_xy[0])
-            om = self.k_ang*theta_d
-            v = self.k_lin*math.sqrt(error_xy[0]**2 + error_xy[1]**2)
-            v_l = v/self.wheel_radius - (self.wheel_base*om)/(2*self.wheel_radius)
-            v_r = v/self.wheel_radius + (self.wheel_base*om)/(2*self.wheel_radius)
-            self.publish_motor_speeds(-v_l, v_r)
-
-    def broadcast_transforms(self):
-        t = TransformStamped()
-        t.header.stamp = self.get_clock().now().to_msg()
-        t.header.frame_id = 'map'
-        t.child_frame_id = 'base_link'
-        t.transform.translation.x = self.position_x
-        t.transform.translation.y = self.position_y
-        t.transform.translation.z = 0.0
-        self.quaternion = self.euler_to_quaternion(0.0, 0.0, self.yaw)
-        t.transform.rotation = self.quaternion
-
-        self.tf_broadcaster.sendTransform(t)
-        
-        self.get_logger().info(f"Map to reference: ({self.position_x:.2f}, {self.position_y:.2f}), Yaw: {self.yaw:.2f}")
-
-
-    def set_lidar_position_in_coppeliasim(self):
-        pos_x = self.copp_pos_x + (self.position_x * math.cos(self.copp_yaw) \
-                                    + self.position_y * -math.sin(self.copp_yaw))
-        pos_y = self.copp_pos_y + (self.position_x * math.sin(self.copp_yaw) \
-                                    + self.position_y * math.cos(self.copp_yaw))
-        # Set position in CoppeliaSim
-        self.sim.setObjectPosition(self.lidar_handle, -1, [pos_x, pos_y, 0.1])
-
-        # Set orientation in CoppeliaSim
-        self.sim.setObjectOrientation(self.lidar_handle, -1, [0, 0, self.copp_yaw+self.yaw])
-
+            error_th = theta_d - self.yaw
+            om = self.k_ang*error_th
+            if abs(error_th) > self.eps_ang:
+                v_rot = (self.wheel_base*om*2)/(2*self.wheel_radius)
+                self.publish_motor_speeds(v_rot, v_rot)
+            else: 
+                v = self.k_lin*math.sqrt(error_xy[0]**2 + error_xy[1]**2)
+                v_l = v/self.wheel_radius - (self.wheel_base*om)/(2*self.wheel_radius)
+                v_r = v/self.wheel_radius + (self.wheel_base*om)/(2*self.wheel_radius)
+                self.publish_motor_speeds(-v_l, v_r)
 
     def publish_lidar_data(self):
         lidar_data = self.sim.readCustomTableData(self.sim.handle_scene, "lidarData")
@@ -366,78 +258,18 @@ class LidarPublisher(Node):
 
             scan_msg.ranges = ranges
             self.lidar_publisher_.publish(scan_msg)
-            #self.get_logger().info("Published LaserScan data to RViz.")
         else:
             self.get_logger().info('No data retrieved from CoppeliaSim.')
-
-    def publish_odom_data(self):
-        odom = Odometry()
-        odom.header.frame_id = 'map'
-        odom.header.stamp = self.get_clock().now().to_msg()
-        odom.child_frame_id = 'base_link'
-        odom.pose.pose.position.x = self.position_x
-        odom.pose.pose.position.y = self.position_y
-        odom.pose.pose.position.z = 0.0
-        odom.pose.pose.orientation = self.quaternion
-        odom.pose.covariance = self.zero_cov_36
-        if self.control == 'path_planner':
-            odom.twist.twist = self.planner_twist
-        else:
-            odom.twist.twist = self.key_input_vel
-        odom.twist.covariance = self.zero_cov_36
-        self.odom_publisher_.publish(odom)
 
     def publish_motor_speeds(self, left_speed, right_speed):
         # Publish speeds to the motor topics
         self.left_motor_pub.publish(Float32(data=left_speed))
         self.right_motor_pub.publish(Float32(data=right_speed))
-            
-    def euler_to_quaternion(self, roll, pitch, yaw):
-        cy = math.cos(yaw * 0.5)
-        sy = math.sin(yaw * 0.5)
-        cp = math.cos(pitch * 0.5)
-        sp = math.sin(pitch * 0.5)
-        cr = math.cos(roll * 0.5)
-        sr = math.sin(roll * 0.5)
-
-        qx = sr * cp * cy - cr * sp * sy
-        qy = cr * sp * cy + sr * cp * sy
-        qz = cr * cp * sy - sr * sp * cy
-        qw = cr * cp * cy + sr * sp * sy
-
-        return TransformStamped().transform.rotation.__class__(x=qx, y=qy, z=qz, w=qw)
-    
-    def list_to_vector3(self, l=[0.0, 0.0, 0.0]):
-        if len(l) != 3:
-            return None
-        v = Vector3()
-        v.x = l[0]
-        v.y = l[1]
-        v.z = l[2]
-        return v
 
     def map_ready(self):
         now = self.get_clock().now()
         elapsed = (now - self.start_time) > rclpy.duration.Duration(seconds=8)
         return self.map_data is not None and elapsed
-    
-    def walk_back(self):
-        last_pos = self.path_to_start.pop()
-        if len(self.path_to_start) < 5:
-            self.path_to_start += [last_pos]*(len(self.path_to_start) - 5)
-        for pos in self.path_to_start[-1:-6:-1]:
-            #self.planner_twist.linear.x = (pos[0] - last_pos[0]) * self.map_res * 10
-            #self.planner_twist.linear.y = (pos[1] - last_pos[1]) * self.map_res * 10
-            self.setpoint_position_x = (pos[0] - self.nav_start_x)*self.map_res
-            self.setpoint_position_y = (pos[1] - self.nav_start_y)*self.map_res # img/alg coords are different than map coords
-            self.controlled = False
-            self.control_pos()
-            #self.broadcast_transforms()
-            #self.publish_odom_data()
-            self.map_pos_publisher_.publish(Vector3(x=float(pos[0]), y=float(pos[1]), z=0.0))
-            #self.set_lidar_position_in_coppeliasim()
-            self.publish_lidar_data()
-            time.sleep(0.1)
 
     def walk_back_it(self):
         if self.wb_i == 0:
@@ -447,6 +279,7 @@ class LidarPublisher(Node):
         pos = self.path_to_start[-(self.wb_i + 1)] # [-1:-6:-1]
         self.setpoint_position_x = (pos[0] - self.nav_start_x)*self.map_res
         self.setpoint_position_y = (pos[1] - self.nav_start_y)*self.map_res # img/alg coords are different than map coords
+        self.get_logger().info(f'STEPPING BACK TO ({self.setpoint_position_x:.2f},{self.setpoint_position_y:.2f})')
         self.controlled = False
         self.map_pos_publisher_.publish(Vector3(x=float(pos[0]), y=float(pos[1]), z=0.0))
         self.wb_i += 1

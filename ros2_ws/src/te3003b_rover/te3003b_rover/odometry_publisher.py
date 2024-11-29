@@ -48,13 +48,21 @@ class OdometryPublisher(Node):
 
     def set_left_motor_velocity(self, msg):
         if self.motor_left is not None:
-            self.sim.setJointTargetVelocity(self.motor_left, msg.data)
+            if msg.data > 0:
+                vel = min(msg.data, 10.0)
+            else:
+                vel = max(msg.data, -10.0)
+            self.sim.setJointTargetVelocity(self.motor_left, vel)
         else:
             self.get_logger().error("Left motor handle is invalid.")
 
     def set_right_motor_velocity(self, msg):
         if self.motor_right is not None:
-            self.sim.setJointTargetVelocity(self.motor_right, msg.data)
+            if msg.data > 0:
+                vel = min(msg.data, 10.0)
+            else:
+                vel = max(msg.data, -10.0)
+            self.sim.setJointTargetVelocity(self.motor_right, vel)
         else:
             self.get_logger().error("Right motor handle is invalid.")
     
