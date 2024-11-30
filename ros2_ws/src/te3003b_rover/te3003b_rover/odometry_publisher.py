@@ -87,7 +87,7 @@ class OdometryPublisher(Node):
         # Publish odometry message
         odom_msg = Odometry()
         odom_msg.header.stamp = self.get_clock().now().to_msg()
-        odom_msg.header.frame_id = 'odom'
+        odom_msg.header.frame_id = 'map'
         odom_msg.child_frame_id = 'robot_base_respondable'
 
         # Pose
@@ -111,6 +111,7 @@ class OdometryPublisher(Node):
         position = self.sim.getObjectPosition(self.robot_base, -1)
         orientation = self.sim.getObjectQuaternion(self.robot_base, -1)
         self.publish_tf(position, orientation, 'map', 'robot_base_respondable')
+        self.publish_tf(position, orientation, 'map', 'odom')
 
         # Publish wheel transforms
         left_wheel_pos = self.sim.getObjectPosition(self.left_wheel, self.robot_base)
@@ -122,7 +123,6 @@ class OdometryPublisher(Node):
         self.publish_tf(right_wheel_pos, right_wheel_ori, 'robot_base_respondable', 'r_wheel')
 
         self.calculate_and_publish_odometry()
-        self.publish_tf(position, orientation, 'map', 'odom')
 
     def publish_tf(self, position, orientation, parent_frame, child_frame):
         # Broadcast a transform

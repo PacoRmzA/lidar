@@ -8,7 +8,6 @@ from launch.event_handlers.on_process_start import OnProcessStart
 
 def generate_launch_description():
 
-    control_param = 'path_planner'
     planner_map_size = 500
     
     rviz = Node(
@@ -35,7 +34,6 @@ def generate_launch_description():
             name='lidar_publisher_slam_map',
             output='screen',
             parameters=[{
-                'control': control_param,
                 'planner_map_size': planner_map_size
             }],
         )
@@ -73,7 +71,7 @@ def generate_launch_description():
             name='objective_selector',
             output='screen',
             parameters=[{
-                'goals': [305,270,  333,230,  292,147],
+                'goals': [355,240,  310,220,  320, 260],
                 'max_distance': 500.0,
                 'planner_map_size': planner_map_size
             }],

@@ -1,5 +1,5 @@
 # This is the D* Lite algorithm (original version - not optimized for the queue U)
-# Based on the FIRST version of the alg shown in the paper (Fig. 4)
+# Based on the SECOND version of the alg shown in the paper (Fig. 5, has k_m variable)
 # Original algorithm: http://idm-lab.org/bib/abstracts/papers/aaai02b.pdf
 # S. Koenig and M. Likhachev. D* Lite. In Proceedings of the AAAI Conference of Artificial Intelligence (AAAI), 476-483, 2002.
 # Implementation inspired by https://github.com/mdeyo/d-star-lite
@@ -230,22 +230,22 @@ class StateGraph:
     def RunProcedure(self, s_start, s_last, scan_range):
         if self.past_past_node == s_start: # Terminate the loop if cannot decide where to go
             print("TIED - NEED TO DECIDE WHERE TO GO")
-            return s_start, None
+            return s_start, None, 1
 
         self.past_past_node = self.past_node
         self.past_node = s_start
         if self.g(s_start) == np.inf:
             print("NO KNOWN PATH")
-            return s_start, None
+            return s_start, None, 2
 
         if self.rhs(s_start) == np.inf: # Terminate the loop immediatly after being trapped inside an obstacle
             print("GOT STUCK")
-            return s_start, None
+            return s_start, None, 3
 
         s_lowest_cost = s_start
         lowest_cost = np.inf
 
-        # s_start = argmin_{s' in succesors of s_Tart}(c(s_start,s')+g(s')) <- line 21
+        # s_start = argmin_{s' in succesors of s_Tart}(c(s_start,s')+g(s')) <- line 26
         for s_p in self.S[s_start].successors:
             temp_cost = self.S[s_start].successors[s_p] + self.g(s_p)
             if temp_cost < lowest_cost:
@@ -259,12 +259,12 @@ class StateGraph:
             s_last = s_start
   
         old_s_last = s_last
-        s_last = self.ScanForNewObstacles(s_start, scan_range, old_s_last) # lines 23 - 29
+        s_last = self.ScanForNewObstacles(s_start, scan_range, old_s_last) # lines 28 - 34
 
         if s_last != old_s_last:
-            self.ComputeShortestPath(s_start) # line 30
+            self.ComputeShortestPath(s_start) # line 35
 
-        return s_start, s_last
+        return s_start, s_last, None
 
     def ScanForNewObstacles(self, s_start, scan_range, s_last):
         states_to_update = {}
